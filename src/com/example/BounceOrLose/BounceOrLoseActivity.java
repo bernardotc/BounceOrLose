@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 public class BounceOrLoseActivity extends Activity {
 
     GameModel model;
+    GameView view;
 
     /**
      * Called when the activity is first created.
@@ -22,6 +23,13 @@ public class BounceOrLoseActivity extends Activity {
         // Create model object
         model = new GameModel(metrics.widthPixels, metrics.heightPixels);
 
-        setContentView(R.layout.main);
+        // Create view object
+        view = new GameView(this);
+
+        setContentView(view);
+    }
+
+    public GameModel getModel() {
+        return model;
     }
 }
