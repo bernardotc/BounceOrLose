@@ -40,16 +40,16 @@ public class Wall {
         double circleDistanceFromWall = vectorFromStartPosToCircleCentre.scalarProduct(normalVector);
         double circleDistanceAlongWall = vectorFromStartPosToCircleCentre.scalarProduct(tangentVector);
 
-        return circleDistanceFromWall <= ballRadius && (depth == null || circleDistanceFromWall >= -(depth + ballRadius))
+        return circleDistanceAlongWall >= 0 && circleDistanceFromWall <= ballRadius && (depth == null || circleDistanceFromWall >= -(depth + ballRadius))
                 && circleDistanceAlongWall >= 0 && circleDistanceAlongWall <= length;
     }
 
-    public Vector2D calculateVelocityAfterACollision(Vector2D position, Vector2D velocity) {
+    public Vector2D calculateVelocityAfterACollision(Vector2D velocity) {
         double vParallel = velocity.scalarProduct(tangentVector);
         double vNormal = velocity.scalarProduct(normalVector);
         if (vNormal < 0) // assumes normal points AWAY from wall...
             vNormal = -vNormal;
-        Vector2D result = tangentVector;
+        Vector2D result = new Vector2D(tangentVector);
         result.multiplyScalar(vParallel);
         result.addScaled(normalVector, vNormal);
         return result;

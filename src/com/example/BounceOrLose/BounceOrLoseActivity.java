@@ -8,6 +8,7 @@ public class BounceOrLoseActivity extends Activity {
 
     GameModel model;
     GameView view;
+    GameThread game;
 
     /**
      * Called when the activity is first created.
@@ -29,7 +30,30 @@ public class BounceOrLoseActivity extends Activity {
         setContentView(view);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        game = new GameThread();
+        game.start();
+    }
+
     public GameModel getModel() {
         return model;
+    }
+
+    class GameThread extends Thread {
+        boolean running = true;
+
+        public void run() {
+            while (running) {
+                try {
+                    getModel().update(50);
+                    view.postInvalidate();
+                    Thread.sleep(50);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

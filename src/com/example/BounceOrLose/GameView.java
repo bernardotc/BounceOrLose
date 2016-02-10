@@ -47,7 +47,8 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
 
     @Override
     public void onClick(View v) {
-
+        if (!controller.getModel().getGameState().equals(Constants.GameStates.END))
+            controller.getModel().setGameState(Constants.GameStates.CLICK);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class Ball {
     private Vector2D velocity;
     private Paint color;
     private double radius;
-    private final int SCREEN_RADIUS;
+    private int SCREEN_RADIUS;
 
     public Ball() {
         this(0, 0, 0, 0, 1, null);
@@ -26,9 +26,38 @@ public class Ball {
         SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
     }
 
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setPosition(Vector2D position) {
+        this.position = position;
+    }
+
+    public Vector2D getPosition() {
+        return position;
+    }
+
+    public void setVelocity(Vector2D velocity) {
+        this.velocity = velocity;
+    }
+
+    public Vector2D getVelocity() {
+        return velocity;
+    }
+
     public void draw(Canvas c) {
         int x = GameModel.convertWorldXtoScreenX(position.getX());
         int y = GameModel.convertWorldYtoScreenY(position.getY());
         c.drawCircle(x, y, (float) SCREEN_RADIUS, color);
+    }
+
+    public void updatePosition() {
+        position.addScaled(velocity, 0.01);
+    }
+
+    public void increaseRadius() {
+        radius += .01;
+        SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
     }
 }
