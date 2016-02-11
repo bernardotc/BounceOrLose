@@ -2,6 +2,9 @@ package com.example.BounceOrLose;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,18 +40,33 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
 
     @Override
     protected void onDraw(Canvas canvas) {
+        Paint scorePaint = new Paint();
+        scorePaint.setStyle(Paint.Style.FILL);
+        scorePaint.setColor(Color.YELLOW);
+        scorePaint.setAntiAlias(true);
+        scorePaint.setTextSize(GameModel.getScreenWidth() / 20);
+
         Ball b = controller.getModel().getBall();
         List<Wall> walls = controller.getModel().getWalls();
         b.draw(canvas);
         for (Wall w : walls) {
             w.draw(canvas);
         }
+
+        Rect bounds = new Rect();
+        scorePaint.getTextBounds(String.valueOf(controller.getModel().getClicks()),0,String.valueOf(controller.getModel().getClicks()).length(),bounds);
+        int width = bounds.width();
+        canvas.drawText(String.valueOf(controller.getModel().getClicks()), GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 20, scorePaint);
     }
 
     @Override
     public void onClick(View v) {
-        if (!controller.getModel().getGameState().equals(Constants.GameStates.END))
-            controller.getModel().setGameState(Constants.GameStates.CLICK);
+        GameModel model = controller.getModel();
+        if (!model.getGameState().equals(Constants.GameStates.END)
+                && model.getGameState().equals(Constants.GameStates.COLLISION)) {
+            model.setClicks(model.getClicks() + 1);
+            model.setGameState(Constants.GameStates.CLICK);
+        }
     }
 
     @Override

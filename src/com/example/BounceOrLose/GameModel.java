@@ -1,19 +1,24 @@
 package com.example.BounceOrLose;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by bernardot on 2/10/16.
  */
-public class GameModel {
+public class GameModel implements Serializable {
     private static double worldWidth = 10;
     private static double worldHeight;
     private static int screenHeight, screenWidth;
     private Constants.GameStates gameState;
+    private double ballScaleFactor = 20;
+    private double wallScaleFactor = 16;
+    private int clicks;
     
     static Paint paintBall, paintWall;
 
@@ -32,18 +37,31 @@ public class GameModel {
         paintWall.setAntiAlias(true);
     }
 
-    public GameModel(int width, int height) {
+    public GameModel(int width, int height, boolean portrait) {
         screenWidth = width;
         screenHeight = height;
+        if (!portrait) {
+            worldWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
+            ballScaleFactor = ballScaleFactor * worldWidth / 10;
+            wallScaleFactor = wallScaleFactor * worldWidth / 10;
+        } else {
+            worldWidth = 10;
+        }
         worldHeight = screenHeight * (worldWidth / screenWidth);
+
+        /*System.out.println(screenWidth + ":" + screenHeight);
+        System.out.println(worldWidth + ":" + worldHeight);
+        System.out.println(ballScaleFactor);
+        System.out.println(wallScaleFactor);*/
         gameInit();
     }
 
     public void gameInit() {
-        ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, 10, 0, 1, paintBall);
+        clicks = 0;
+        ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, 10, 0, worldWidth / ballScaleFactor, paintBall);
         walls = new ArrayList<>();
-        walls.add(new Wall(1, worldHeight, 1, 0, paintWall));
-        walls.add(new Wall(worldWidth - 1, 0, worldWidth - 1, worldHeight, paintWall));
+        walls.add(new Wall(worldWidth / wallScaleFactor, worldHeight, worldWidth / wallScaleFactor, 0, paintWall));
+        walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)), 0, worldWidth * (1 - (1 / wallScaleFactor)), worldHeight, paintWall));
         gameState = Constants.GameStates.MOVING;
     }
 
@@ -97,6 +115,22 @@ public class GameModel {
 
     public Constants.GameStates getGameState() {
         return gameState;
+    }
+
+    public int getClicks() {
+        return clicks;
+    }
+
+    public void setClicks(int clicks) {
+        this.clicks = clicks;
+    }
+
+    public static int getScreenHeight() {
+        return screenHeight;
+    }
+
+    public static int getScreenWidth() {
+        return screenWidth;
     }
 
     // The 3 following methods were taken from the Physics Based Game module

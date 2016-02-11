@@ -7,4 +7,6 @@ public class Constants {
     enum GameStates {
         COLLISION, MOVING, CLICK, END
     }
+    static String modelKey = "Model";
+    static String saveFile = "savedGameData";
 }

@@ -1,8 +1,15 @@
 package com.example.BounceOrLose;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class BounceOrLoseActivity extends Activity {
 
@@ -22,7 +29,11 @@ public class BounceOrLoseActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         // Create model object
-        model = new GameModel(metrics.widthPixels, metrics.heightPixels);
+        boolean portrait = true;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            portrait = false;
+        }
+        model = new GameModel(metrics.widthPixels, metrics.heightPixels, portrait);
 
         // Create view object
         view = new GameView(this);
@@ -33,8 +44,51 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        //loadGame();
         game = new GameThread();
         game.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //saveGame();
+    }
+
+    public void saveGame() {
+        try {
+            FileOutputStream out = openFileOutput(Constants.saveFile, Context.MODE_PRIVATE);
+            ObjectOutputStream obj = new ObjectOutputStream(out);
+            obj.writeObject(getModel());
+            obj.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadGame() {
+        try {
+            FileInputStream in = openFileInput(Constants.saveFile);
+            ObjectInputStream obj = new ObjectInputStream(in);
+            model = (GameModel) obj.readObject();
+            obj.close();
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable(Constants.modelKey, getModel());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        model = (GameModel) savedInstanceState.getSerializable(Constants.modelKey);
     }
 
     public GameModel getModel() {
