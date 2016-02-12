@@ -79,7 +79,7 @@ public class BounceOrLoseActivity extends Activity {
         }
     }
 
-    @Override
+    /*@Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(Constants.modelKey, getModel());
         super.onSaveInstanceState(outState);
@@ -89,7 +89,7 @@ public class BounceOrLoseActivity extends Activity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         model = (GameModel) savedInstanceState.getSerializable(Constants.modelKey);
-    }
+    }*/
 
     public GameModel getModel() {
         return model;
@@ -103,7 +103,7 @@ public class BounceOrLoseActivity extends Activity {
                 try {
                     getModel().update(50);
                     view.postInvalidate();
-                    Thread.sleep(50);
+                    Thread.sleep(20);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

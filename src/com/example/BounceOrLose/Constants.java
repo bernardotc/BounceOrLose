@@ -5,7 +5,7 @@ package com.example.BounceOrLose;
  */
 public class Constants {
     enum GameStates {
-        COLLISION, MOVING, CLICK, END
+        COLLISION, MOVING, CLICK, END, PAUSED
     }
     static String modelKey = "Model";
     static String saveFile = "savedGameData";

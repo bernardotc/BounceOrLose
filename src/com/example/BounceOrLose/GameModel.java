@@ -19,6 +19,7 @@ public class GameModel implements Serializable {
     private double ballScaleFactor = 20;
     private double wallScaleFactor = 16;
     private int clicks;
+    private double differenceFictionalReal;
     
     static Paint paintBall, paintWall;
 
@@ -41,18 +42,29 @@ public class GameModel implements Serializable {
         screenWidth = width;
         screenHeight = height;
         if (!portrait) {
+            double fictionalWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
+            double fictionalHeight = screenHeight * (worldWidth / screenWidth);
+            double fictionalBallScaleFactor = ballScaleFactor * fictionalWidth / 10;
+            double fictionalWallScaleFactor = wallScaleFactor * fictionalWidth / 10;
+            double fictionalLeftWallX = fictionalWidth / fictionalWallScaleFactor;
+            double fictionalRightWallX = fictionalWidth * (1 - (1 / fictionalWallScaleFactor));
+            differenceFictionalReal = (fictionalRightWallX - fictionalLeftWallX) - (worldWidth * (1 - (1 / wallScaleFactor)) - worldWidth / wallScaleFactor);
+            System.out.println(differenceFictionalReal);
+
             worldWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
             ballScaleFactor = ballScaleFactor * worldWidth / 10;
             wallScaleFactor = wallScaleFactor * worldWidth / 10;
         } else {
             worldWidth = 10;
+            differenceFictionalReal = 0;
         }
         worldHeight = screenHeight * (worldWidth / screenWidth);
 
-        /*System.out.println(screenWidth + ":" + screenHeight);
+        System.out.println(screenWidth + ":" + screenHeight);
         System.out.println(worldWidth + ":" + worldHeight);
         System.out.println(ballScaleFactor);
-        System.out.println(wallScaleFactor);*/
+        System.out.println(wallScaleFactor);
+        gameState = Constants.GameStates.PAUSED;
         gameInit();
     }
 
@@ -60,9 +72,10 @@ public class GameModel implements Serializable {
         clicks = 0;
         ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, 10, 0, worldWidth / ballScaleFactor, paintBall);
         walls = new ArrayList<>();
-        walls.add(new Wall(worldWidth / wallScaleFactor, worldHeight, worldWidth / wallScaleFactor, 0, paintWall));
-        walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)), 0, worldWidth * (1 - (1 / wallScaleFactor)), worldHeight, paintWall));
-        gameState = Constants.GameStates.MOVING;
+        walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0, paintWall));
+        walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight, paintWall));
+        System.out.println(worldWidth / wallScaleFactor + differenceFictionalReal / 2);
+        System.out.println(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2);
     }
 
     public void update(int delay) {

@@ -46,6 +46,12 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
         scorePaint.setAntiAlias(true);
         scorePaint.setTextSize(GameModel.getScreenWidth() / 20);
 
+        Paint infoPaint = new Paint();
+        infoPaint.setStyle(Paint.Style.FILL);
+        infoPaint.setColor(Color.CYAN);
+        infoPaint.setAntiAlias(true);
+        infoPaint.setTextSize(GameModel.getScreenWidth() / 10);
+
         Ball b = controller.getModel().getBall();
         List<Wall> walls = controller.getModel().getWalls();
         b.draw(canvas);
@@ -56,7 +62,22 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
         Rect bounds = new Rect();
         scorePaint.getTextBounds(String.valueOf(controller.getModel().getClicks()),0,String.valueOf(controller.getModel().getClicks()).length(),bounds);
         int width = bounds.width();
-        canvas.drawText(String.valueOf(controller.getModel().getClicks()), GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 20, scorePaint);
+        canvas.drawText(String.valueOf(controller.getModel().getClicks()), GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 16, scorePaint);
+        if (controller.getModel().getGameState().equals(Constants.GameStates.PAUSED)) {
+            infoPaint.getTextBounds("Game Paused", 0, "Game Paused".length(), bounds);
+            width = bounds.width();
+            canvas.drawText("Game Paused", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3 * 0.6f, infoPaint);
+            infoPaint.getTextBounds("Click to resume", 0, "Click to resume".length(), bounds);
+            width = bounds.width();
+            canvas.drawText("Click to resume", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3, infoPaint);
+        } else if (controller.getModel().getGameState().equals(Constants.GameStates.END)) {
+            infoPaint.getTextBounds("Game end", 0, "Game end".length(), bounds);
+            width = bounds.width();
+            canvas.drawText("Game end", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3 * 0.6f, infoPaint);
+            infoPaint.getTextBounds("Click to start", 0, "Click to start".length(), bounds);
+            width = bounds.width();
+            canvas.drawText("Click to start", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3, infoPaint);
+        }
     }
 
     @Override
@@ -66,6 +87,11 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
                 && model.getGameState().equals(Constants.GameStates.COLLISION)) {
             model.setClicks(model.getClicks() + 1);
             model.setGameState(Constants.GameStates.CLICK);
+        } else if (model.getGameState().equals(Constants.GameStates.PAUSED)) {
+            model.setGameState(Constants.GameStates.MOVING);
+        } else if (model.getGameState().equals(Constants.GameStates.END)) {
+            model.setGameState(Constants.GameStates.MOVING);
+            model.gameInit();
         }
     }
 

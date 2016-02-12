@@ -2,6 +2,7 @@ package com.example.BounceOrLose;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 
 /**
  * Created by bernardot on 2/10/16.
@@ -48,7 +49,7 @@ public class Wall {
         double vParallel = velocity.scalarProduct(tangentVector);
         double vNormal = velocity.scalarProduct(normalVector);
         if (vNormal < 0) // assumes normal points AWAY from wall...
-            vNormal = -vNormal;
+            vNormal = -vNormal * 1.001;
         Vector2D result = new Vector2D(tangentVector);
         result.multiplyScalar(vParallel);
         result.addScaled(normalVector, vNormal);
