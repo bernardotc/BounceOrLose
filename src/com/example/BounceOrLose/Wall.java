@@ -4,24 +4,24 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
+import java.io.Serializable;
+
 /**
  * Created by bernardot on 2/10/16.
  */
-public class Wall {
+public class Wall implements Serializable {
     private Vector2D startPosition, endPosition, tangentVector, normalVector;
     private double length;
     private Double depth;
-    private Paint color;
 
-    public Wall(double sx, double sy, double ex, double ey, Paint col) {
+    public Wall(double sx, double sy, double ex, double ey) {
         // Setting depth to null. This means barrier is infinite.
-        this(sx, sy, ex, ey, col, null);
+        this(sx, sy, ex, ey, null);
     }
 
-    public Wall(double sx, double sy, double ex, double ey, Paint col, Double d) {
+    public Wall(double sx, double sy, double ex, double ey, Double d) {
         startPosition = new Vector2D(sx, sy);
         endPosition = new Vector2D(ex, ey);
-        color = col;
         depth = d;
 
         // Calculate wall length
@@ -34,6 +34,14 @@ public class Wall {
 
         // Obtain normal vector;
         normalVector = tangentVector.rotateVector90degreesAnticlockwise();
+    }
+
+    public Vector2D getStartPosition() {
+        return startPosition;
+    }
+
+    public Vector2D getEndPosition() {
+        return endPosition;
     }
 
     public boolean isBallCollidingWall(Vector2D ballCentre, double ballRadius) {
@@ -61,6 +69,6 @@ public class Wall {
         int y1 = GameModel.convertWorldYtoScreenY(startPosition.getY());
         int x2 = GameModel.convertWorldXtoScreenX(endPosition.getX());
         int y2 = GameModel.convertWorldYtoScreenY(endPosition.getY());
-        c.drawLine(x1, y1, x2, y2, color);
+        c.drawLine(x1, y1, x2, y2, Constants.paintWall);
     }
 }

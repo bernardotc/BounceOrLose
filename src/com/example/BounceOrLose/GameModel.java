@@ -20,28 +20,16 @@ public class GameModel implements Serializable {
     private double wallScaleFactor = 16;
     private int clicks;
     private double differenceFictionalReal;
-    
-    static Paint paintBall, paintWall;
+    private boolean portrait;
 
     private Ball ball;
     private List<Wall> walls;
-    
-    static {
-        paintBall = new Paint();
-        paintBall.setColor(Color.BLUE);
-        paintBall.setStyle(Paint.Style.FILL);
-        paintBall.setAntiAlias(true);
-
-        paintWall = new Paint();
-        paintWall.setColor(Color.WHITE);
-        paintWall.setStyle(Paint.Style.FILL);
-        paintWall.setAntiAlias(true);
-    }
 
     public GameModel(int width, int height, boolean portrait) {
         screenWidth = width;
         screenHeight = height;
-        if (!portrait) {
+        this.portrait = portrait;
+        if (!this.portrait) {
             double fictionalWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
             double fictionalHeight = screenHeight * (worldWidth / screenWidth);
             double fictionalBallScaleFactor = ballScaleFactor * fictionalWidth / 10;
@@ -49,7 +37,7 @@ public class GameModel implements Serializable {
             double fictionalLeftWallX = fictionalWidth / fictionalWallScaleFactor;
             double fictionalRightWallX = fictionalWidth * (1 - (1 / fictionalWallScaleFactor));
             differenceFictionalReal = (fictionalRightWallX - fictionalLeftWallX) - (worldWidth * (1 - (1 / wallScaleFactor)) - worldWidth / wallScaleFactor);
-            System.out.println(differenceFictionalReal);
+            //System.out.println(differenceFictionalReal);
 
             worldWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
             ballScaleFactor = ballScaleFactor * worldWidth / 10;
@@ -60,22 +48,22 @@ public class GameModel implements Serializable {
         }
         worldHeight = screenHeight * (worldWidth / screenWidth);
 
-        System.out.println(screenWidth + ":" + screenHeight);
+        /*System.out.println(screenWidth + ":" + screenHeight);
         System.out.println(worldWidth + ":" + worldHeight);
         System.out.println(ballScaleFactor);
-        System.out.println(wallScaleFactor);
+        System.out.println(wallScaleFactor);*/
         gameState = Constants.GameStates.PAUSED;
         gameInit();
     }
 
     public void gameInit() {
         clicks = 0;
-        ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, 10, 0, worldWidth / ballScaleFactor, paintBall);
+        ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, 10, 0, worldWidth / ballScaleFactor);
         walls = new ArrayList<>();
-        walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0, paintWall));
-        walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight, paintWall));
-        System.out.println(worldWidth / wallScaleFactor + differenceFictionalReal / 2);
-        System.out.println(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2);
+        walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0));
+        walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight));
+        //System.out.println(worldWidth / wallScaleFactor + differenceFictionalReal / 2);
+        //System.out.println(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2);
     }
 
     public void update(int delay) {
@@ -114,6 +102,19 @@ public class GameModel implements Serializable {
         }
     }
 
+    public void adjustGameToFitScreen(Ball ball, Double difference, int clicks, Constants.GameStates gameState) {
+        setGameState(gameState);
+        setClicks(clicks);
+        Vector2D ballPosition = this.ball.getPosition();
+        this.ball = ball;
+        if (difference != null) {
+            ballPosition.setX(this.ball.getPosition().getX() - difference / 2);
+        } else {
+            ballPosition.setX(this.ball.getPosition().getX() + differenceFictionalReal / 2);
+        }
+        this.ball.setPosition(ballPosition);
+    }
+
     public Ball getBall() {
         return ball;
     }
@@ -146,6 +147,14 @@ public class GameModel implements Serializable {
         return screenWidth;
     }
 
+    public boolean isPortrait() {
+        return portrait;
+    }
+
+    public double getDifferenceFictionalReal() {
+        return differenceFictionalReal;
+    }
+
     // The 3 following methods were taken from the Physics Based Game module
     public static int convertWorldXtoScreenX(double worldX) {
         return (int) (worldX / worldWidth * screenWidth);
@@ -156,5 +165,19 @@ public class GameModel implements Serializable {
     }
     public static int convertWorldLengthToScreenLength(double worldLength) {
         return (int) (worldLength / worldWidth * screenWidth);
+    }
+
+    public String toString() {
+        String model = "";
+        model += "Screen: " + screenWidth + ":" + screenHeight + "\n";
+        model += "World: " + worldWidth + ":" + worldHeight + "\n";
+        model += "Portrait: " + portrait + "\n";
+        model += "Ball: " + ball.getPosition().getX() + ":" + ball.getPosition().getY() + "\n";
+        model += "Left wall: " + walls.get(0).getStartPosition().getX() + ":" + walls.get(0).getStartPosition().getY()
+                + " / " + walls.get(0).getEndPosition().getX() + ":" + walls.get(0).getEndPosition().getY() + "\n";
+        model += "Right wall: " + walls.get(1).getStartPosition().getX() + ":" + walls.get(1).getStartPosition().getY()
+                + " / " + walls.get(1).getEndPosition().getX() + ":" + walls.get(1).getEndPosition().getY() + "\n";
+
+        return model;
     }
 }

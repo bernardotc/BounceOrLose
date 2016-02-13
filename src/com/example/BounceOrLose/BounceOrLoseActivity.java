@@ -16,6 +16,7 @@ public class BounceOrLoseActivity extends Activity {
     GameModel model;
     GameView view;
     GameThread game;
+    boolean portrait = true;
 
     /**
      * Called when the activity is first created.
@@ -29,7 +30,7 @@ public class BounceOrLoseActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         // Create model object
-        boolean portrait = true;
+        portrait = true;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             portrait = false;
         }
@@ -44,7 +45,7 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        //loadGame();
+        loadGame();
         game = new GameThread();
         game.start();
     }
@@ -52,7 +53,9 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        //saveGame();
+        if (!model.getGameState().equals(Constants.GameStates.END))
+            model.setGameState(Constants.GameStates.PAUSED);
+        saveGame();
     }
 
     public void saveGame() {
@@ -71,7 +74,8 @@ public class BounceOrLoseActivity extends Activity {
         try {
             FileInputStream in = openFileInput(Constants.saveFile);
             ObjectInputStream obj = new ObjectInputStream(in);
-            model = (GameModel) obj.readObject();
+            GameModel game = (GameModel) obj.readObject();
+            loadGameDataToModel(game);
             obj.close();
             in.close();
         } catch (Exception e) {
@@ -79,7 +83,7 @@ public class BounceOrLoseActivity extends Activity {
         }
     }
 
-    /*@Override
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(Constants.modelKey, getModel());
         super.onSaveInstanceState(outState);
@@ -88,11 +92,24 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        model = (GameModel) savedInstanceState.getSerializable(Constants.modelKey);
-    }*/
+        GameModel game = (GameModel) savedInstanceState.getSerializable(Constants.modelKey);
+        loadGameDataToModel(game);
+    }
 
     public GameModel getModel() {
         return model;
+    }
+    
+    public void loadGameDataToModel(GameModel game) {
+        System.out.println(game.toString());
+        if (!game.isPortrait() && portrait) {
+            model.adjustGameToFitScreen(game.getBall(), game.getDifferenceFictionalReal(), game.getClicks(), game.getGameState());
+        } else if (game.isPortrait() && !portrait) {
+            model.adjustGameToFitScreen(game.getBall(), null, game.getClicks(), game.getGameState());
+        } else {
+            model = game;
+        }
+        System.out.println(getModel().toString());
     }
 
     class GameThread extends Thread {

@@ -1,9 +1,11 @@
 package com.example.BounceOrLose;
 
+import java.io.Serializable;
+
 /**
  * Created by bernardot on 2/10/16.
  */
-public class Vector2D {
+public class Vector2D implements Serializable {
     private double x;
     private double y;
 
