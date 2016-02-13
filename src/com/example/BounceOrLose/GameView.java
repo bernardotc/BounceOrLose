@@ -40,18 +40,6 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Paint scorePaint = new Paint();
-        scorePaint.setStyle(Paint.Style.FILL);
-        scorePaint.setColor(Color.YELLOW);
-        scorePaint.setAntiAlias(true);
-        scorePaint.setTextSize(GameModel.getScreenWidth() / 20);
-
-        Paint infoPaint = new Paint();
-        infoPaint.setStyle(Paint.Style.FILL);
-        infoPaint.setColor(Color.CYAN);
-        infoPaint.setAntiAlias(true);
-        infoPaint.setTextSize(GameModel.getScreenWidth() / 10);
-
         Ball b = controller.getModel().getBall();
         List<Wall> walls = controller.getModel().getWalls();
         b.draw(canvas);
@@ -60,31 +48,27 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
         }
 
         Rect bounds = new Rect();
-        scorePaint.getTextBounds(String.valueOf(controller.getModel().getClicks()),0,String.valueOf(controller.getModel().getClicks()).length(),bounds);
+        Constants.scorePaint.getTextBounds(String.valueOf(controller.getModel().getClicks()),0,String.valueOf(controller.getModel().getClicks()).length(),bounds);
         int width = bounds.width();
-        canvas.drawText(String.valueOf(controller.getModel().getClicks()), GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 16, scorePaint);
+        canvas.drawText(String.valueOf(controller.getModel().getClicks()), GameModel.getScreenWidthStatic() / 2 - width / 2, GameModel.getScreenHeightStatic() / 16, Constants.scorePaint);
         if (controller.getModel().getGameState().equals(Constants.GameStates.PAUSED)) {
-            infoPaint.getTextBounds("Game Paused", 0, "Game Paused".length(), bounds);
-            width = bounds.width();
-            canvas.drawText("Game Paused", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3 * 0.6f, infoPaint);
-            infoPaint.getTextBounds("Click to resume", 0, "Click to resume".length(), bounds);
-            width = bounds.width();
-            canvas.drawText("Click to resume", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3, infoPaint);
+            drawMessage(Constants.pauseMessage, Constants.infoPaint, Constants.resumeMessage, Constants.infoPaint, canvas);
         } else if (controller.getModel().getGameState().equals(Constants.GameStates.END)) {
-            infoPaint.getTextBounds("Game end", 0, "Game end".length(), bounds);
-            width = bounds.width();
-            canvas.drawText("Game end", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3 * 0.6f, infoPaint);
-            infoPaint.getTextBounds("Click to restart", 0, "Click to restart".length(), bounds);
-            width = bounds.width();
-            canvas.drawText("Click to restart", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3, infoPaint);
+            drawMessage(Constants.endMessage, Constants.infoPaint, Constants.restartMessage, Constants.infoPaint, canvas);
         } else if (controller.getModel().getGameState().equals(Constants.GameStates.START)) {
-            infoPaint.getTextBounds("Bounce or Lose", 0, "Bounce or Lose".length(), bounds);
-            width = bounds.width();
-            canvas.drawText("Bounce or Lose", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3 * 0.6f, infoPaint);
-            infoPaint.getTextBounds("Click to start", 0, "Click to start".length(), bounds);
-            width = bounds.width();
-            canvas.drawText("Click to start", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3, infoPaint);
+            drawMessage(Constants.titleMessage, Constants.infoPaint, Constants.startMessage, Constants.infoPaint, canvas);
         }
+    }
+
+    public void drawMessage(String textUp, Paint up, String textDown, Paint down, Canvas canvas) {
+        Rect bounds = new Rect();
+        int width;
+        up.getTextBounds(textUp, 0, textUp.length(), bounds);
+        width = bounds.width();
+        canvas.drawText(textUp, GameModel.getScreenWidthStatic() / 2 - width / 2, GameModel.getScreenHeightStatic() / 3 * 0.6f, up);
+        down.getTextBounds(textDown, 0, textDown.length(), bounds);
+        width = bounds.width();
+        canvas.drawText(textDown, GameModel.getScreenWidthStatic() / 2 - width / 2, GameModel.getScreenHeightStatic() / 3, down);
     }
 
     @Override

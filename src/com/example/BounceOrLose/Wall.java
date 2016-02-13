@@ -56,8 +56,8 @@ public class Wall implements Serializable {
     public Vector2D calculateVelocityAfterACollision(Vector2D velocity) {
         double vParallel = velocity.scalarProduct(tangentVector);
         double vNormal = velocity.scalarProduct(normalVector);
-        if (vNormal < 0) // assumes normal points AWAY from wall...
-            vNormal = -vNormal * 1.001;
+        if (vNormal < 0) // Assumes normal points AWAY from wall...
+            vNormal = -vNormal * Constants.coefficientOfRestitution;
         Vector2D result = new Vector2D(tangentVector);
         result.multiplyScalar(vParallel);
         result.addScaled(normalVector, vNormal);

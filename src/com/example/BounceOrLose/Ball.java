@@ -53,11 +53,11 @@ public class Ball implements Serializable {
     }
 
     public void updatePosition() {
-        position.addScaled(velocity, 0.01);
+        position.addScaled(velocity, Constants.deltaTime);
     }
 
     public void increaseRadius() {
-        radius += .01;
+        radius += Constants.increaseRadiusFactor;
         SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
     }
 }

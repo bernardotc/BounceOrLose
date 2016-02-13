@@ -19,6 +19,7 @@ public class BounceOrLoseActivity extends Activity {
     GameModel model;
     GameView view;
     GameThread game;
+    DisplayMetrics metrics;
     boolean portrait = true;
 
     /**
@@ -29,7 +30,7 @@ public class BounceOrLoseActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         // Get screen resolution
-        DisplayMetrics metrics = new DisplayMetrics();
+        metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         // Create model object
@@ -38,6 +39,9 @@ public class BounceOrLoseActivity extends Activity {
             portrait = false;
         }
         model = new GameModel(metrics.widthPixels, metrics.heightPixels, portrait);
+
+        // Set String and size constants of the app
+        setStringSizeConstants();
 
         // Create view object
         view = new GameView(this);
@@ -56,8 +60,8 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (!model.getGameState().equals(Constants.GameStates.END) && !model.getGameState().equals(Constants.GameStates.START))
-            model.setGameState(Constants.GameStates.PAUSED);
+        if (!getModel().getGameState().equals(Constants.GameStates.END) && !getModel().getGameState().equals(Constants.GameStates.START))
+            getModel().setGameState(Constants.GameStates.PAUSED);
         saveGame();
     }
 
@@ -104,15 +108,13 @@ public class BounceOrLoseActivity extends Activity {
     }
     
     public void loadGameDataToModel(GameModel game) {
-        System.out.println(game.toString());
         if (!game.isPortrait() && portrait) {
-            model.adjustGameToFitScreen(game.getBall(), game.getDifferenceFictionalReal(), game.getClicks(), game.getGameState());
+            getModel().adjustGameToFitScreen(game.getBall(), game.getDifferenceFictionalReal(), game.getClicks(), game.getGameState());
         } else if (game.isPortrait() && !portrait) {
-            model.adjustGameToFitScreen(game.getBall(), null, game.getClicks(), game.getGameState());
+            getModel().adjustGameToFitScreen(game.getBall(), null, game.getClicks(), game.getGameState());
         } else {
             model = game;
         }
-        System.out.println(getModel().toString());
     }
 
     class GameThread extends Thread {
@@ -121,9 +123,9 @@ public class BounceOrLoseActivity extends Activity {
         public void run() {
             while (running) {
                 try {
-                    getModel().update(50);
+                    getModel().update();
                     view.postInvalidate();
-                    Thread.sleep(20);
+                    Thread.sleep(Constants.delay);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -134,12 +136,17 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Pause the game
+            if (!getModel().getGameState().equals(Constants.GameStates.END) && !getModel().getGameState().equals(Constants.GameStates.START))
+                getModel().setGameState(Constants.GameStates.PAUSED);
+
+            // Then, continue with the dialog.
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle(Constants.backTitleDialog);
             alertDialog.setMessage(Constants.backMessageDialog);
 
             alertDialog.setButton(DialogInterface.BUTTON_POSITIVE,
-                    "Yes", new DialogInterface.OnClickListener()
+                    Constants.backMessagePositive, new DialogInterface.OnClickListener()
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -148,16 +155,39 @@ public class BounceOrLoseActivity extends Activity {
                     });
 
             alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
-                    "No", new DialogInterface.OnClickListener()
+                    Constants.backMessageNegative, new DialogInterface.OnClickListener()
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // do nothing dialog will dismiss
+                            // Do nothing dialog will dismiss
                         }
                     });
             alertDialog.show();
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public void setStringSizeConstants() {
+        Constants.modelKey = getResources().getString(R.string.modelKey);
+        Constants.saveFile = getResources().getString(R.string.saveFile);
+        Constants.backTitleDialog = getResources().getString(R.string.backTitleDialog);
+        Constants.backMessageDialog = getResources().getString(R.string.backMessageDialog);
+        Constants.backMessagePositive = getResources().getString(R.string.backMessagePositive);
+        Constants.backMessageNegative = getResources().getString(R.string.backMessageNegative);
+        Constants.pauseMessage = getResources().getString(R.string.pausedMessage);
+        Constants.endMessage = getResources().getString(R.string.endMessage);
+        Constants.titleMessage = getResources().getString(R.string.titleMessage);
+        Constants.resumeMessage = getResources().getString(R.string.resumeMessage);
+        Constants.restartMessage = getResources().getString(R.string.restartMessage);
+        Constants.startMessage = getResources().getString(R.string.startMessage);
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Constants.scorePaint.setTextSize(GameModel.getScreenWidthStatic() / 30);
+            Constants.infoPaint.setTextSize(GameModel.getScreenWidthStatic() / 15);
+        } else {
+            Constants.scorePaint.setTextSize(GameModel.getScreenWidthStatic() / 20);
+            Constants.infoPaint.setTextSize(GameModel.getScreenWidthStatic() / 10);
+        }
     }
 }

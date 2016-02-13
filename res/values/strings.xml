@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bounce or Lose</string>
+    <string name="modelKey">Model</string>
+    <string name="saveFile">savedGameData</string>
+    <string name="backTitleDialog">Leaving to soon? Thought you were having fun.</string>
+    <string name="backMessageDialog">Are you sure?</string>
+    <string name="backMessagePositive">Unfortunately yes</string>
+    <string name="backMessageNegative">Keep playing! What I were thinking?</string>
+    <string name="pausedMessage">Game Paused</string>
+    <string name="endMessage">End of game</string>
+    <string name="titleMessage">Bounce or Lose</string>
+    <string name="resumeMessage">Click to resume</string>
+    <string name="restartMessage">Click to restart</string>
+    <string name="startMessage">Click to start</string>
 </resources>

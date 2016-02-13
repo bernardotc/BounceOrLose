@@ -12,12 +12,18 @@ import java.util.List;
  * Created by bernardot on 2/10/16.
  */
 public class GameModel implements Serializable {
-    private static double worldWidth = 10;
-    private static double worldHeight;
-    private static int screenHeight, screenWidth;
+    // Variables for static methods and references of the world from other classes.
+    private static double worldWidthStatic;
+    private static double worldHeightStatic;
+    private static int screenHeightStatic, screenWidthStatic;
     private Constants.GameStates gameState;
-    private double ballScaleFactor = 20;
-    private double wallScaleFactor = 16;
+
+    // Variables used inside the game model
+    private double worldWidth = Constants.worldWidth;
+    private double worldHeight;
+    private int screenHeight, screenWidth;
+    private double ballScaleFactor = Constants.ballScaleFactor;
+    private double wallScaleFactor = Constants.wallScaleFactor;
     private int clicks;
     private double differenceFictionalReal;
     private boolean portrait;
@@ -26,47 +32,52 @@ public class GameModel implements Serializable {
     private List<Wall> walls;
 
     public GameModel(int width, int height, boolean portrait) {
+        // Set screen dimensions
         screenWidth = width;
         screenHeight = height;
+
         this.portrait = portrait;
         if (!this.portrait) {
-            double fictionalWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
-            double fictionalHeight = screenHeight * (worldWidth / screenWidth);
-            double fictionalBallScaleFactor = ballScaleFactor * fictionalWidth / 10;
-            double fictionalWallScaleFactor = wallScaleFactor * fictionalWidth / 10;
+            // Do some calculation to facilitate future scaling when changing orientation.
+            double fictionalWidth = Constants.worldWidth * ((double) screenWidth / (double) screenHeight);
+            double fictionalWallScaleFactor = wallScaleFactor * fictionalWidth / Constants.worldWidth;
             double fictionalLeftWallX = fictionalWidth / fictionalWallScaleFactor;
             double fictionalRightWallX = fictionalWidth * (1 - (1 / fictionalWallScaleFactor));
-            differenceFictionalReal = (fictionalRightWallX - fictionalLeftWallX) - (worldWidth * (1 - (1 / wallScaleFactor)) - worldWidth / wallScaleFactor);
-            //System.out.println(differenceFictionalReal);
+            differenceFictionalReal = (fictionalRightWallX - fictionalLeftWallX) - (Constants.worldWidth * (1 - (1 / wallScaleFactor)) - Constants.worldWidth / wallScaleFactor);
 
+            // Recalculate valus to adjust to the landscape orientation.
             worldWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
-            ballScaleFactor = ballScaleFactor * worldWidth / 10;
-            wallScaleFactor = wallScaleFactor * worldWidth / 10;
+            ballScaleFactor = ballScaleFactor * worldWidth / Constants.worldWidth;
+            wallScaleFactor = wallScaleFactor * worldWidth / Constants.worldWidth;
         } else {
-            worldWidth = 10;
+            // Use the portrait given values.
+            worldWidth = Constants.worldWidth;
             differenceFictionalReal = 0;
         }
+
+        // Calculate the world height keeping in mind screen width and height
         worldHeight = screenHeight * (worldWidth / screenWidth);
 
-        /*System.out.println(screenWidth + ":" + screenHeight);
-        System.out.println(worldWidth + ":" + worldHeight);
-        System.out.println(ballScaleFactor);
-        System.out.println(wallScaleFactor);*/
+        // Set the static variables for calculations outside this class.
+        screenWidthStatic = screenWidth;
+        screenHeightStatic = screenHeight;
+        worldWidthStatic = worldWidth;
+        worldHeightStatic = worldHeight;
+
+        // Set the game state and create objects.
         gameState = Constants.GameStates.START;
         gameInit();
     }
 
     public void gameInit() {
         clicks = 0;
-        ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, 10, 0, worldWidth / ballScaleFactor);
+        ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, Constants.ballInitialVelocityX, 0, worldWidth / ballScaleFactor);
         walls = new ArrayList<>();
         walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0));
         walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight));
-        //System.out.println(worldWidth / wallScaleFactor + differenceFictionalReal / 2);
-        //System.out.println(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2);
     }
 
-    public void update(int delay) {
+    public void update() {
         if (gameState.equals(Constants.GameStates.MOVING)) {
             ball.updatePosition();
             for (Wall wall : walls) {
@@ -139,12 +150,12 @@ public class GameModel implements Serializable {
         this.clicks = clicks;
     }
 
-    public static int getScreenHeight() {
-        return screenHeight;
+    public static int getScreenHeightStatic() {
+        return screenHeightStatic;
     }
 
-    public static int getScreenWidth() {
-        return screenWidth;
+    public static int getScreenWidthStatic() {
+        return screenWidthStatic;
     }
 
     public boolean isPortrait() {
@@ -157,14 +168,14 @@ public class GameModel implements Serializable {
 
     // The 3 following methods were taken from the Physics Based Game module
     public static int convertWorldXtoScreenX(double worldX) {
-        return (int) (worldX / worldWidth * screenWidth);
+        return (int) (worldX / worldWidthStatic * screenWidthStatic);
     }
     public static int convertWorldYtoScreenY(double worldY) {
-        // minus sign in here is because screen coordinates are upside down.
-        return (int) (screenHeight - (worldY / worldHeight * screenHeight));
+        // Minus sign in here is because screen coordinates are upside down.
+        return (int) (screenHeightStatic - (worldY / worldHeightStatic * screenHeightStatic));
     }
     public static int convertWorldLengthToScreenLength(double worldLength) {
-        return (int) (worldLength / worldWidth * screenWidth);
+        return (int) (worldLength / worldWidthStatic * screenWidthStatic);
     }
 
     public String toString() {
