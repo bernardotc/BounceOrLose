@@ -1,10 +1,13 @@
 package com.example.BounceOrLose;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -53,7 +56,7 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (!model.getGameState().equals(Constants.GameStates.END))
+        if (!model.getGameState().equals(Constants.GameStates.END) && !model.getGameState().equals(Constants.GameStates.START))
             model.setGameState(Constants.GameStates.PAUSED);
         saveGame();
     }
@@ -126,5 +129,35 @@ public class BounceOrLoseActivity extends Activity {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(Constants.backTitleDialog);
+            alertDialog.setMessage(Constants.backMessageDialog);
+
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                    "Yes", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE,
+                    "No", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing dialog will dismiss
+                        }
+                    });
+            alertDialog.show();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

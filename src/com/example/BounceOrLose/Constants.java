@@ -8,10 +8,13 @@ import android.graphics.Paint;
  */
 public class Constants {
     enum GameStates {
-        COLLISION, MOVING, CLICK, END, PAUSED
+        COLLISION, MOVING, CLICK, END, PAUSED, START
     }
     static String modelKey = "Model";
     static String saveFile = "savedGameData";
+    static String backTitleDialog = "Leaving to soon? Thought you were having fun.";
+    static String backMessageDialog = "Are you sure?";
+
     static Paint paintBall, paintWall;
 
     static {
@@ -25,5 +28,7 @@ public class Constants {
         paintWall.setStyle(Paint.Style.FILL);
         paintWall.setAntiAlias(true);
     }
+
+
 
 }

@@ -74,6 +74,13 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
             infoPaint.getTextBounds("Game end", 0, "Game end".length(), bounds);
             width = bounds.width();
             canvas.drawText("Game end", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3 * 0.6f, infoPaint);
+            infoPaint.getTextBounds("Click to restart", 0, "Click to restart".length(), bounds);
+            width = bounds.width();
+            canvas.drawText("Click to restart", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3, infoPaint);
+        } else if (controller.getModel().getGameState().equals(Constants.GameStates.START)) {
+            infoPaint.getTextBounds("Bounce or Lose", 0, "Bounce or Lose".length(), bounds);
+            width = bounds.width();
+            canvas.drawText("Bounce or Lose", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3 * 0.6f, infoPaint);
             infoPaint.getTextBounds("Click to start", 0, "Click to start".length(), bounds);
             width = bounds.width();
             canvas.drawText("Click to start", GameModel.getScreenWidth() / 2 - width / 2, GameModel.getScreenHeight() / 3, infoPaint);
@@ -90,8 +97,10 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
         } else if (model.getGameState().equals(Constants.GameStates.PAUSED)) {
             model.setGameState(Constants.GameStates.MOVING);
         } else if (model.getGameState().equals(Constants.GameStates.END)) {
-            model.setGameState(Constants.GameStates.MOVING);
+            model.setGameState(Constants.GameStates.START);
             model.gameInit();
+        } else if (model.getGameState().equals(Constants.GameStates.START)) {
+            model.setGameState(Constants.GameStates.MOVING);
         }
     }
 

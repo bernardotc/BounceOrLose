@@ -52,7 +52,7 @@ public class GameModel implements Serializable {
         System.out.println(worldWidth + ":" + worldHeight);
         System.out.println(ballScaleFactor);
         System.out.println(wallScaleFactor);*/
-        gameState = Constants.GameStates.PAUSED;
+        gameState = Constants.GameStates.START;
         gameInit();
     }
 
