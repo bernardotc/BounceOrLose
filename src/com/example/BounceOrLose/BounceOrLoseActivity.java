@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -131,6 +134,22 @@ public class BounceOrLoseActivity extends Activity {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(getResources().getString(R.string.instructionsItem));
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getTitle().equals(getResources().getString(R.string.instructionsItem))) {
+            Intent intent = new Intent(Intent.ACTION_ASSIST);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

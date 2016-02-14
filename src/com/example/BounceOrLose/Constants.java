@@ -50,7 +50,7 @@ public class Constants {
     static double worldWidth = 10;
     static double ballScaleFactor = 20;
     static double wallScaleFactor = 16;
-    static double ballInitialVelocityX = 10;
+    static double ballInitialVelocityX = 5;
 
     // Ball Constants
     static double increaseRadiusFactor = 0.01;
