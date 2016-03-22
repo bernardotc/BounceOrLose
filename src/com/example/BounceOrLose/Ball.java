@@ -49,7 +49,11 @@ public class Ball implements Serializable {
     public void draw(Canvas c) {
         int x = GameModel.convertWorldXtoScreenX(position.getX());
         int y = GameModel.convertWorldYtoScreenY(position.getY());
-        c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.paintBall);
+        if (GameModel.getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+            c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.sickPaintBall);
+        } else {
+            c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.paintBall);
+        }
     }
 
     public void updatePosition() {
@@ -58,6 +62,11 @@ public class Ball implements Serializable {
 
     public void increaseRadius() {
         radius += Constants.increaseRadiusFactor;
+        SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
+    }
+
+    public void reduceRadius() {
+        radius -= Constants.reduceRadiusFactor;
         SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
     }
 }

@@ -2,7 +2,6 @@ package com.example.BounceOrLose;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -76,7 +75,11 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
         GameModel model = controller.getModel();
         if (!model.getGameState().equals(Constants.GameStates.END)
                 && model.getGameState().equals(Constants.GameStates.COLLISION)) {
-            model.setClicks(model.getClicks() + 1);
+            if (model.getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
+                model.setClicks(model.getClicks() + 2);
+            } else {
+                model.setClicks(model.getClicks() + 1);
+            }
             model.setGameState(Constants.GameStates.CLICK);
         } else if (model.getGameState().equals(Constants.GameStates.PAUSED)) {
             model.setGameState(Constants.GameStates.MOVING);

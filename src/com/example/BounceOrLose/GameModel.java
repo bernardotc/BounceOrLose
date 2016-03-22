@@ -1,9 +1,5 @@
 package com.example.BounceOrLose;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +12,10 @@ public class GameModel implements Serializable {
     private static double worldWidthStatic;
     private static double worldHeightStatic;
     private static int screenHeightStatic, screenWidthStatic;
-    private Constants.GameStates gameState;
+    private static PowerUp powerUp;
 
     // Variables used inside the game model
+    private Constants.GameStates gameState;
     private double worldWidth = Constants.worldWidth;
     private double worldHeight;
     private int screenHeight, screenWidth;
@@ -30,6 +27,7 @@ public class GameModel implements Serializable {
 
     private Ball ball;
     private List<Wall> walls;
+    private int powerUpCounter;
 
     public GameModel(int width, int height, boolean portrait) {
         // Set screen dimensions
@@ -75,9 +73,25 @@ public class GameModel implements Serializable {
         walls = new ArrayList<>();
         walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0));
         walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight));
+        powerUpCounter = 0;
+        powerUp = new PowerUp(500, Constants.PowerUps.NONE);
     }
 
     public void update() {
+        if (!gameState.equals(Constants.GameStates.START) && !gameState.equals(Constants.GameStates.END) && powerUpCounter >= powerUp.getDuration()) {
+            powerUpCounter = 0;
+            System.out.println("Hello");
+            if (powerUp.getType().equals(Constants.PowerUps.NONE)) {
+                if (Math.random() <= .49) {
+                    powerUp = new PowerUp(500, Constants.PowerUps.DOUBLE_POINTS);
+                } else {
+                    powerUp = new PowerUp(500, Constants.PowerUps.REDUCE_SIZE);
+                }
+            } else {
+                powerUp = new PowerUp(500, Constants.PowerUps.NONE);
+            }
+        }
+
         if (gameState.equals(Constants.GameStates.MOVING)) {
             ball.updatePosition();
             for (Wall wall : walls) {
@@ -88,7 +102,9 @@ public class GameModel implements Serializable {
             }
             checkBallTouchingTwoWalls();
         } else if (gameState.equals(Constants.GameStates.COLLISION)) {
-            ball.increaseRadius();
+            if (!powerUp.getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+                ball.increaseRadius();
+            }
             checkBallTouchingTwoWalls();
         } else if (gameState.equals(Constants.GameStates.CLICK)) {
             boolean touching = false;
@@ -102,8 +118,13 @@ public class GameModel implements Serializable {
             if (!touching) {
                 gameState = Constants.GameStates.MOVING;
             }
+            if (powerUp.getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+                ball.reduceRadius();
+            }
             checkBallTouchingTwoWalls();
         }
+
+        powerUpCounter++;
     }
 
     public void checkBallTouchingTwoWalls() {
@@ -164,6 +185,10 @@ public class GameModel implements Serializable {
 
     public double getDifferenceFictionalReal() {
         return differenceFictionalReal;
+    }
+
+    public static PowerUp getPowerUp() {
+        return powerUp;
     }
 
     // The 3 following methods were taken from the Physics Based Game module
