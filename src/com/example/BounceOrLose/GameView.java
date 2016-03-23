@@ -1,11 +1,11 @@
 package com.example.BounceOrLose;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 
 import java.util.List;
@@ -13,8 +13,10 @@ import java.util.List;
 /**
  * Created by bernardot on 2/10/16.
  */
-public class GameView extends View implements View.OnClickListener, View.OnTouchListener {
-    BounceOrLoseActivity controller;
+public class GameView extends SurfaceView implements View.OnClickListener, View.OnTouchListener {
+    private BounceOrLoseActivity controller;
+    private Bitmap virus = BitmapFactory.decodeResource(getResources(), R.drawable.virus);
+    private Bitmap virusReduce = BitmapFactory.decodeResource(getResources(), R.drawable.virus_reduce);
 
     public GameView(Context context) {
         super(context);
@@ -37,19 +39,41 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
         setOnClickListener(this);
     }
 
+    public void draw() {
+        SurfaceHolder holder = getHolder();
+        Canvas canvas = null;
+        try {
+            canvas = holder.lockCanvas();
+            if (canvas != null) {
+                onDraw(canvas);
+            }
+        } finally {
+            if (canvas != null) {
+                holder.unlockCanvasAndPost(canvas);
+            }
+        }
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.drawColor(Color.BLACK);
+
         Ball b = controller.getModel().getBall();
         List<Wall> walls = controller.getModel().getWalls();
-        b.draw(canvas);
+
+        if (GameModel.getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+            b.draw(canvas, virusReduce);
+        } else {
+            b.draw(canvas, virus);
+        }
         for (Wall w : walls) {
             w.draw(canvas);
         }
 
         Rect bounds = new Rect();
-        Constants.scorePaint.getTextBounds(String.valueOf(controller.getModel().getClicks()),0,String.valueOf(controller.getModel().getClicks()).length(),bounds);
+        Constants.scorePaint.getTextBounds(String.valueOf(controller.getModel().getScore()),0,String.valueOf(controller.getModel().getScore()).length(),bounds);
         int width = bounds.width();
-        canvas.drawText(String.valueOf(controller.getModel().getClicks()), GameModel.getScreenWidthStatic() / 2 - width / 2, GameModel.getScreenHeightStatic() / 16, Constants.scorePaint);
+        canvas.drawText(String.valueOf(controller.getModel().getScore()), GameModel.getScreenWidthStatic() / 2 - width / 2, GameModel.getScreenHeightStatic() / 16, Constants.scorePaint);
         if (controller.getModel().getGameState().equals(Constants.GameStates.PAUSED)) {
             drawMessage(Constants.pauseMessage, Constants.infoPaint, Constants.resumeMessage, Constants.infoPaint, canvas);
         } else if (controller.getModel().getGameState().equals(Constants.GameStates.END)) {
@@ -76,10 +100,11 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
         if (!model.getGameState().equals(Constants.GameStates.END)
                 && model.getGameState().equals(Constants.GameStates.COLLISION)) {
             if (model.getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
-                model.setClicks(model.getClicks() + 2);
+                model.setScore(model.getScore() + 2);
             } else {
-                model.setClicks(model.getClicks() + 1);
+                model.setScore(model.getScore() + 1);
             }
+            model.setGoodClicks(model.getGoodClicks() + 1);
             model.setGameState(Constants.GameStates.CLICK);
         } else if (model.getGameState().equals(Constants.GameStates.PAUSED)) {
             model.setGameState(Constants.GameStates.MOVING);
@@ -88,6 +113,9 @@ public class GameView extends View implements View.OnClickListener, View.OnTouch
             model.gameInit();
         } else if (model.getGameState().equals(Constants.GameStates.START)) {
             model.setGameState(Constants.GameStates.MOVING);
+        } else if (model.getGameState().equals(Constants.GameStates.MOVING)) {
+            model.setBadClicks(model.getBadClicks() + 1);
+            model.getBall().increaseRadius();
         }
     }
 

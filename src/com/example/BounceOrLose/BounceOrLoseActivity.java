@@ -6,11 +6,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -55,7 +60,7 @@ public class BounceOrLoseActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadGame();
+        //loadGame();
         game = new GameThread();
         game.start();
     }
@@ -65,7 +70,7 @@ public class BounceOrLoseActivity extends Activity {
         super.onPause();
         if (!getModel().getGameState().equals(Constants.GameStates.END) && !getModel().getGameState().equals(Constants.GameStates.START))
             getModel().setGameState(Constants.GameStates.PAUSED);
-        saveGame();
+        //saveGame();
     }
 
     public void saveGame() {
@@ -112,9 +117,9 @@ public class BounceOrLoseActivity extends Activity {
     
     public void loadGameDataToModel(GameModel game) {
         if (!game.isPortrait() && portrait) {
-            getModel().adjustGameToFitScreen(game.getBall(), game.getDifferenceFictionalReal(), game.getClicks(), game.getGameState());
+            getModel().adjustGameToFitScreen(game.getBall(), game.getDifferenceFictionalReal(), game.getGoodClicks(), game.getGameState());
         } else if (game.isPortrait() && !portrait) {
-            getModel().adjustGameToFitScreen(game.getBall(), null, game.getClicks(), game.getGameState());
+            getModel().adjustGameToFitScreen(game.getBall(), null, game.getGoodClicks(), game.getGameState());
         } else {
             model = game;
         }
@@ -127,7 +132,11 @@ public class BounceOrLoseActivity extends Activity {
             while (running) {
                 try {
                     getModel().update();
-                    view.postInvalidate();
+                    if (getModel().getGameState().equals(Constants.GameStates.END)) {
+                        loadShowScore();
+                        join();
+                    }
+                    view.draw();
                     Thread.sleep(Constants.delay);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -182,7 +191,9 @@ public class BounceOrLoseActivity extends Activity {
                         }
                     });
             alertDialog.show();
+            finish();
             return true;
+
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -208,5 +219,40 @@ public class BounceOrLoseActivity extends Activity {
             Constants.scorePaint.setTextSize(GameModel.getScreenWidthStatic() / 20);
             Constants.infoPaint.setTextSize(GameModel.getScreenWidthStatic() / 10);
         }
+    }
+
+    public void loadShowScore() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                RelativeLayout backMenuButton;
+                ImageView imageBackMenyButton;
+                TextView textScore;
+                TextView textBackMenuView;
+                TextView titleView;
+
+                setContentView(R.layout.score);
+                backMenuButton = (RelativeLayout) findViewById(R.id.button_menu);
+                imageBackMenyButton = (ImageView) findViewById(R.id.img_button);
+                textBackMenuView = (TextView) findViewById(R.id.text_menu);
+                textScore = (TextView) findViewById(R.id.score_game);
+                titleView = (TextView) findViewById(R.id.title_game);
+                Typeface customFont = Typeface.createFromAsset(getAssets(), "Acidic.TTF");
+                textBackMenuView.setTypeface(customFont);
+                titleView.setTypeface(customFont);
+                textScore.setTypeface(customFont);
+                textScore.setText(textScore.getText() + " " + getModel().getGoodClicks());
+
+                backMenuButton.setOnTouchListener(new ButtonWithTouch(imageBackMenyButton));
+
+                backMenuButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //Call GameActivity to start the game
+                        finish();
+                    }
+                });
+            }
+        });
     }
 }

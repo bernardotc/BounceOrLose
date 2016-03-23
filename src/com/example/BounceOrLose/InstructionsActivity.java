@@ -23,7 +23,7 @@ public class InstructionsActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home: {
-                // Assumming the parent acitivy is on the back of the stack.
+                // Assumming the parent activity is on the back of the stack.
                 // The alternate way is commented out.
                 // this.startActivity(upIntent);
                 // NavUtils.navigateUpTo(this, upIntent);

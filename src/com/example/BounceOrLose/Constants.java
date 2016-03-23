@@ -23,12 +23,12 @@ public class Constants {
     static {
         paintBall = new Paint();
         paintBall.setColor(Color.BLUE);
-        paintBall.setStyle(Paint.Style.FILL);
+        paintBall.setStyle(Paint.Style.STROKE);
         paintBall.setAntiAlias(true);
 
         sickPaintBall = new Paint();
         sickPaintBall.setColor(Color.MAGENTA);
-        sickPaintBall.setStyle(Paint.Style.FILL);
+        sickPaintBall.setStyle(Paint.Style.STROKE);
         sickPaintBall.setAntiAlias(true);
 
         paintWall = new Paint();
@@ -52,20 +52,23 @@ public class Constants {
         COLLISION, MOVING, CLICK, END, PAUSED, START
     }
 
-    enum PowerUps {
-        DOUBLE_POINTS, REDUCE_SIZE, NONE
-    }
-
     static double worldWidth = 10;
     static double ballScaleFactor = 20;
     static double wallScaleFactor = 16;
-    static double ballInitialVelocityX = 3;
+    static double ballInitialVelocityX = 5;
+
+    // PowerUps Constants
+    enum PowerUps {
+        DOUBLE_POINTS, REDUCE_SIZE, NONE
+    }
+    static double doublePointsProbability = .05;
+    static double reduceSizeProbability = .025;
 
     // Ball Constants
     static double increaseRadiusFactor = 0.01;
-    static double reduceRadiusFactor = 0.1;
+    static double reduceRadiusFactor = 0.05;
     static double deltaTime = 0.01;
 
     // Wall Constants
-    static double coefficientOfRestitution = 1.001;
+    static double coefficientOfRestitution = 1.01;
 }

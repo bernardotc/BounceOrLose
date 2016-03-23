@@ -21,7 +21,9 @@ public class GameModel implements Serializable {
     private int screenHeight, screenWidth;
     private double ballScaleFactor = Constants.ballScaleFactor;
     private double wallScaleFactor = Constants.wallScaleFactor;
-    private int clicks;
+    private int goodClicks;
+    private int badClicks;
+    private int score;
     private double differenceFictionalReal;
     private boolean portrait;
 
@@ -43,7 +45,7 @@ public class GameModel implements Serializable {
             double fictionalRightWallX = fictionalWidth * (1 - (1 / fictionalWallScaleFactor));
             differenceFictionalReal = (fictionalRightWallX - fictionalLeftWallX) - (Constants.worldWidth * (1 - (1 / wallScaleFactor)) - Constants.worldWidth / wallScaleFactor);
 
-            // Recalculate valus to adjust to the landscape orientation.
+            // Recalculate values to adjust to the landscape orientation.
             worldWidth = worldWidth * ((double) screenWidth / (double) screenHeight);
             ballScaleFactor = ballScaleFactor * worldWidth / Constants.worldWidth;
             wallScaleFactor = wallScaleFactor * worldWidth / Constants.worldWidth;
@@ -63,34 +65,42 @@ public class GameModel implements Serializable {
         worldHeightStatic = worldHeight;
 
         // Set the game state and create objects.
-        gameState = Constants.GameStates.START;
+        gameState = Constants.GameStates.MOVING;
         gameInit();
     }
 
     public void gameInit() {
-        clicks = 0;
+        goodClicks = badClicks = score = 0;
         ball = new Ball(worldWidth / 2, worldHeight / 2 + 1, Constants.ballInitialVelocityX, 0, worldWidth / ballScaleFactor);
         walls = new ArrayList<>();
         walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0));
         walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight));
         powerUpCounter = 0;
-        powerUp = new PowerUp(500, Constants.PowerUps.NONE);
+        powerUp = new PowerUp();
     }
 
     public void update() {
-        if (!gameState.equals(Constants.GameStates.START) && !gameState.equals(Constants.GameStates.END) && powerUpCounter >= powerUp.getDuration()) {
+        if (!gameState.equals(Constants.GameStates.START) && !gameState.equals(Constants.GameStates.END) && !gameState.equals(Constants.GameStates.PAUSED) && powerUpCounter >= powerUp.getDuration()) {
             powerUpCounter = 0;
-            System.out.println("Hello");
             if (powerUp.getType().equals(Constants.PowerUps.NONE)) {
-                if (Math.random() <= .49) {
-                    powerUp = new PowerUp(500, Constants.PowerUps.DOUBLE_POINTS);
-                } else {
-                    powerUp = new PowerUp(500, Constants.PowerUps.REDUCE_SIZE);
+                if (Math.random() <= Constants.doublePointsProbability) {
+                    powerUp = new DoublePoints_PowerUp();
+                } else if (Math.random() <= Constants.reduceSizeProbability) {
+                    powerUp = new ReduceSize_PowerUp();
                 }
             } else {
-                powerUp = new PowerUp(500, Constants.PowerUps.NONE);
+                powerUp = new PowerUp();
             }
         }
+
+        if (ball.checkBallInsideLimits(0, worldWidth)) {
+            System.out.println(gameState.toString());
+            System.out.println(ball.getRadius());
+            System.out.println(ball.getVelocity().getX() + "//" + ball.getVelocity().getY());
+            gameState = Constants.GameStates.END;
+        }
+
+        checkBallTouchingTwoWalls();
 
         if (gameState.equals(Constants.GameStates.MOVING)) {
             ball.updatePosition();
@@ -100,7 +110,6 @@ public class GameModel implements Serializable {
                     gameState = Constants.GameStates.COLLISION;
                 }
             }
-            checkBallTouchingTwoWalls();
         } else if (gameState.equals(Constants.GameStates.COLLISION)) {
             if (!powerUp.getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
                 ball.increaseRadius();
@@ -136,7 +145,7 @@ public class GameModel implements Serializable {
 
     public void adjustGameToFitScreen(Ball ball, Double difference, int clicks, Constants.GameStates gameState) {
         setGameState(gameState);
-        setClicks(clicks);
+        setGoodClicks(clicks);
         Vector2D ballPosition = this.ball.getPosition();
         this.ball = ball;
         if (difference != null) {
@@ -163,12 +172,28 @@ public class GameModel implements Serializable {
         return gameState;
     }
 
-    public int getClicks() {
-        return clicks;
+    public int getGoodClicks() {
+        return goodClicks;
     }
 
-    public void setClicks(int clicks) {
-        this.clicks = clicks;
+    public void setGoodClicks(int goodClicks) {
+        this.goodClicks = goodClicks;
+    }
+
+    public int getBadClicks() {
+        return badClicks;
+    }
+
+    public void setBadClicks(int badClicks) {
+        this.badClicks = badClicks;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public static int getScreenHeightStatic() {

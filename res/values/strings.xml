@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bounce or Lose</string>
+    <string name="app_name">Virus Attack!</string>
     <string name="instructionsItem">Instructions</string>
     <string name="instructions">The game consists in keeping the ball bouncing all the time.\n\nThere are two walls on both side of your screen. When your ball collides with a wall, the ball starts increasing its size! To stop that, you need to CLICK the screen as fast as you can!\n\nHave fun!</string>
     <string name="modelKey">Model</string>
     <string name="saveFile">savedGameData</string>
-    <string name="backTitleDialog">Leaving to soon? Thought you were having fun.</string>
+    <string name="backTitleDialog">Warning! You will lose your progress.</string>
     <string name="backMessageDialog">Are you sure?</string>
-    <string name="backMessagePositive">Unfortunately yes</string>
+    <string name="backMessagePositive">Unfortunately yes.</string>
     <string name="backMessageNegative">Keep playing! What I were thinking?</string>
     <string name="pausedMessage">Game Paused</string>
     <string name="endMessage">End of game</string>
     <string name="titleMessage">Bounce or Lose</string>
     <string name="resumeMessage">Click to resume</string>
     <string name="restartMessage">Click to restart</string>
-    <string name="startMessage">Click to start</string>
+    <string name="startMessage">Start Game</string>
+    <string name="backMenu">Go to Main Menu</string>
+    <string name="finalScore">Your score is:</string>
 </resources>

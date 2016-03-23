@@ -1,8 +1,7 @@
 package com.example.BounceOrLose;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
+import android.content.res.Resources;
+import android.graphics.*;
 
 import java.io.Serializable;
 
@@ -46,9 +45,13 @@ public class Ball implements Serializable {
         return velocity;
     }
 
-    public void draw(Canvas c) {
+    public void draw(Canvas c, Bitmap bmp) {
         int x = GameModel.convertWorldXtoScreenX(position.getX());
         int y = GameModel.convertWorldYtoScreenY(position.getY());
+
+        bmp = Bitmap.createScaledBitmap(bmp, (int) (SCREEN_RADIUS * 2.5), (int) (SCREEN_RADIUS * 2.5), false);
+        c.drawBitmap(bmp, x - bmp.getWidth() / 2, y - bmp.getHeight() / 2, null);
+
         if (GameModel.getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
             c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.sickPaintBall);
         } else {
@@ -68,5 +71,16 @@ public class Ball implements Serializable {
     public void reduceRadius() {
         radius -= Constants.reduceRadiusFactor;
         SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
+    }
+
+    public boolean checkBallInsideLimits(double leftLimit, double rightLimit) {
+        if (position.getX() <= leftLimit) {
+            velocity.setX(-velocity.getX());
+            return true;
+        } else if (position.getX() >= rightLimit) {
+            velocity.setX(-velocity.getX());
+            return true;
+        }
+        return false;
     }
 }

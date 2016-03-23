@@ -1,15 +1,17 @@
 package com.example.BounceOrLose;
 
+import java.io.Serializable;
+
 /**
  * Created by bernardot on 3/22/16.
  */
-public class PowerUp {
+public class PowerUp implements Serializable {
     private int duration;
     private Constants.PowerUps type;
 
-    public PowerUp(int duration, Constants.PowerUps type) {
-        this.duration = duration;
-        this.type = type;
+    public PowerUp() {
+        this.duration = 50;
+        this.type = Constants.PowerUps.NONE;
     }
 
     public int getDuration() {
