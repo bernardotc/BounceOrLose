@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Virus Attack!</string>
     <string name="instructionsItem">Instructions</string>
-    <string name="instructions">The game consists in keeping the ball bouncing all the time.\n\nThere are two walls on both side of your screen. When your ball collides with a wall, the ball starts increasing its size! To stop that, you need to CLICK the screen as fast as you can!\n\nHave fun!</string>
+    <string name="instructions">A virus has been spotted in your system. Help your cells defend against this virus by CLICKING your screen whenever the virus is touching one of your cells. Be careful, the vius gets bigger when feeding from one of your cells. If the virus is big enough to enter one of your cells or touch both of them... sorry but you are ill and unable to keep playing. Watch out for the behaviour of the virus!</string>
     <string name="modelKey">Model</string>
     <string name="saveFile">savedGameData</string>
     <string name="backTitleDialog">Warning! You will lose your progress.</string>
@@ -21,4 +21,5 @@
     <string name="clickMessage">Click!</string>
     <string name="reduceMessage">Kill the virus!</string>
     <string name="madnessMessage">Virus is mad!</string>
+    <string name="instructionsTitle">Your immune system is under attack!</string>
 </resources>

@@ -44,5 +44,35 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/button_instructions"
+            android:layout_width="400dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="670dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+        <ImageView
+                android:id="@+id/img_buttonInstructions"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/button"/>
+
+        <TextView
+                android:id="@+id/text_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_horizontal"
+                android:text="@string/instructionsItem"
+                android:textSize="40sp"
+                android:textColor="#000099"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    </RelativeLayout>
 </RelativeLayout>
 

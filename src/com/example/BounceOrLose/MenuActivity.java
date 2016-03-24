@@ -20,6 +20,10 @@ public class MenuActivity extends Activity {
     TextView textStartView;
     TextView titleView;
 
+    RelativeLayout intructionsButton;
+    ImageView imageIntructionsButton;
+    TextView textIntructionsView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,20 +33,34 @@ public class MenuActivity extends Activity {
         imageStartButton = (ImageView) findViewById(R.id.img_button);
         textStartView = (TextView) findViewById(R.id.text_start);
         titleView = (TextView) findViewById(R.id.title_game);
+
+        intructionsButton = (RelativeLayout) findViewById(R.id.button_instructions);
+        imageIntructionsButton = (ImageView) findViewById(R.id.img_buttonInstructions);
+        textIntructionsView = (TextView) findViewById(R.id.text_instructions);
+
         Typeface customFont = Typeface.createFromAsset(getAssets(), "Acidic.TTF");
         textStartView.setTypeface(customFont);
         titleView.setTypeface(customFont);
+        textIntructionsView.setTypeface(customFont);
 
         startButton.setOnTouchListener(new ButtonWithTouch(imageStartButton));
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Call GameActivity to start the game
                 Intent myIntent = new Intent(MenuActivity.this, BounceOrLoseActivity.class);
                 startActivity(myIntent);
             }
         });
 
+        intructionsButton.setOnTouchListener(new ButtonWithTouch(imageIntructionsButton));
+
+        intructionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MenuActivity.this, InstructionsActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 }

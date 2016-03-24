@@ -143,7 +143,7 @@ public class GameModel implements Serializable {
         }
 
         if (powerUp.getType().equals(Constants.PowerUps.MADNESS)) {
-            ball.increaseRadius(0.4);
+            ball.increaseRadius(0.3);
         }
 
         powerUpCounter++;

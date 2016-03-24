@@ -1,8 +1,13 @@
 package com.example.BounceOrLose;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -10,28 +15,34 @@ import android.widget.TextView;
  */
 public class InstructionsActivity extends Activity {
 
+    RelativeLayout backButton;
+    ImageView imageBackButton;
+    TextView textInstructionsView;
+    TextView titleInstructionsView;
+    TextView textBackView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TextView textView = new TextView(this);
-        textView.setText(getResources().getString(R.string.instructions));
-        setContentView(textView);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+        setContentView(R.layout.instructions);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home: {
-                // Assumming the parent activity is on the back of the stack.
-                // The alternate way is commented out.
-                // this.startActivity(upIntent);
-                // NavUtils.navigateUpTo(this, upIntent);
+        backButton = (RelativeLayout) findViewById(R.id.button_menu);
+        imageBackButton = (ImageView) findViewById(R.id.img_button);
+        textInstructionsView = (TextView) findViewById(R.id.text_instructions);
+        titleInstructionsView = (TextView) findViewById(R.id.title_instructions);
+        textBackView = (TextView) findViewById(R.id.text_menu);
+
+        Typeface customFont = Typeface.createFromAsset(getAssets(), "Acidic.TTF");
+        titleInstructionsView.setTypeface(customFont);
+        textBackView.setTypeface(customFont);
+
+        backButton.setOnTouchListener(new ButtonWithTouch(imageBackButton));
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        });
     }
 }
