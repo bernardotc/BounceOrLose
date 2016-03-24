@@ -16,9 +16,9 @@ public class Constants {
     static String backTitleDialog, backMessageDialog, backMessagePositive, backMessageNegative;
 
     // GameView Constants
-    static String pauseMessage, endMessage, titleMessage, resumeMessage, restartMessage, startMessage;
+    static String pauseMessage, endMessage, titleMessage, resumeMessage, restartMessage, startMessage, doubleClicksMessage, clickMessage, reduceMessage, madnessMessage;
 
-    static Paint paintBall, sickPaintBall, paintWall, scorePaint, infoPaint;
+    static Paint paintBall, sickPaintBall, doublePaintBall, madnessPaintBall, paintWall, scorePaint, infoPaint;
 
     static {
         paintBall = new Paint();
@@ -30,6 +30,16 @@ public class Constants {
         sickPaintBall.setColor(Color.MAGENTA);
         sickPaintBall.setStyle(Paint.Style.STROKE);
         sickPaintBall.setAntiAlias(true);
+
+        doublePaintBall = new Paint();
+        doublePaintBall.setColor(Color.rgb(219, 237, 126));
+        doublePaintBall.setStyle(Paint.Style.STROKE);
+        doublePaintBall.setAntiAlias(true);
+
+        madnessPaintBall = new Paint();
+        madnessPaintBall.setColor(Color.RED);
+        madnessPaintBall.setStyle(Paint.Style.STROKE);
+        madnessPaintBall.setAntiAlias(true);
 
         paintWall = new Paint();
         paintWall.setColor(Color.WHITE);
@@ -43,7 +53,7 @@ public class Constants {
 
         infoPaint = new Paint();
         infoPaint.setStyle(Paint.Style.FILL);
-        infoPaint.setColor(Color.CYAN);
+        infoPaint.setColor(Color.rgb(255, 165, 0));
         infoPaint.setAntiAlias(true);
     }
 
@@ -59,14 +69,14 @@ public class Constants {
 
     // PowerUps Constants
     enum PowerUps {
-        DOUBLE_POINTS, REDUCE_SIZE, NONE
+        DOUBLE_POINTS, REDUCE_SIZE, MADNESS, NONE
     }
     static double doublePointsProbability = .05;
     static double reduceSizeProbability = .025;
 
     // Ball Constants
     static double increaseRadiusFactor = 0.01;
-    static double reduceRadiusFactor = 0.05;
+    static double reduceRadiusFactor = 0.002;
     static double deltaTime = 0.01;
 
     // Wall Constants

@@ -4,12 +4,18 @@
     <shared>
       <config>
         <devices>
+          <device id="7in WSVGA (Tablet)" />
           <device id="Nexus 4" />
           <device id="10.1in WXGA (Tablet)" />
         </devices>
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/res/layout-large/main.xml">
+        <config>
+          <theme>@android:style/Theme.NoTitleBar.Fullscreen</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/res/layout/main.xml">
         <config>
           <theme>@android:style/Theme.NoTitleBar.Fullscreen</theme>
@@ -23,45 +29,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dfd3886-91d3-4abb-9eea-f5946a1a916e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/Acidic.TTF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/button.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/button_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/main_background.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus_reduce.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/score.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/ButtonWithTouch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/MenuActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/ReduceSize_PowerUp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus_double.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus_mad.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-large/main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-large/score.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/Madness_PowerUp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/BounceOrLose.apk" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/BounceOrLose.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/BounceOrLose.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/BounceOrLose.unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Ball.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Ball.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$1.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$2.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$GameThread.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$GameThread.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$3$1.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$3$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$3.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/BounceOrLoseActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Constants$GameStates.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Constants$GameStates.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Constants$PowerUps.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Constants$PowerUps.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Constants.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/DoublePoints_PowerUp.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/DoublePoints_PowerUp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/GameModel.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/GameModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/GameView.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/GameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/PowerUp.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/PowerUp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$drawable.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$drawable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$id.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$layout.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$layout.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$string.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R$string.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R.class" afterPath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/BounceOrLose/R.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/score.xml" afterPath="$PROJECT_DIR$/res/layout/score.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/DoublePoints_PowerUp.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/DoublePoints_PowerUp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/GameModel.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/GameModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/GameView.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/GameView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/InstructionsActivity.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/InstructionsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/BounceOrLose/PowerUp.java" afterPath="$PROJECT_DIR$/src/com/example/BounceOrLose/PowerUp.java" />
     </list>
     <ignored path="BounceOrLose.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,14 +84,10 @@
         <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="233" column="47" selection-start-line="233" selection-start-column="47" selection-end-line="233" selection-end-column="47" />
+              <caret line="216" column="76" selection-start-line="216" selection-start-column="76" selection-end-line="216" selection-end-column="76" />
               <folding>
                 <element signature="e#4559#4610#0" expanded="true" />
                 <element signature="e#4748#4799#0" expanded="true" />
-                <element signature="e#5759#6019#0" expanded="true" />
-                <element signature="e#6018#6019#0" expanded="true" />
-                <element signature="e#6141#6425#0" expanded="true" />
-                <element signature="e#6424#6425#0" expanded="true" />
                 <element signature="e#6645#6688#0" expanded="true" />
                 <element signature="e#6719#6762#0" expanded="true" />
                 <element signature="e#6800#6850#0" expanded="true" />
@@ -107,38 +100,91 @@
                 <element signature="e#7413#7461#0" expanded="true" />
                 <element signature="e#7498#7547#0" expanded="true" />
                 <element signature="e#7582#7629#0" expanded="true" />
-                <element signature="e#8160#9628#0" expanded="true" />
-                <element signature="e#9355#9602#0" expanded="true" />
-                <element signature="e#9601#9602#0" expanded="true" />
-                <element signature="e#9627#9628#0" expanded="true" />
+                <element signature="e#7671#7725#0" expanded="true" />
+                <element signature="e#7760#7807#0" expanded="true" />
+                <element signature="e#7843#7891#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1698112">
-              <caret line="47" column="0" selection-start-line="2" selection-start-column="14" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.91764706">
+              <caret line="76" column="21" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ButtonWithTouch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/ButtonWithTouch.java">
+      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/GameModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#313#314#0" expanded="true" />
-                <element signature="e#359#360#0" expanded="true" />
+                <element signature="e#7390#7391#0" expanded="true" />
+                <element signature="e#7417#7418#0" expanded="true" />
+                <element signature="e#7453#7454#0" expanded="true" />
+                <element signature="e#7481#7482#0" expanded="true" />
+                <element signature="e#7545#7546#0" expanded="true" />
+                <element signature="e#7587#7588#0" expanded="true" />
+                <element signature="e#7637#7638#0" expanded="true" />
+                <element signature="e#7669#7670#0" expanded="true" />
+                <element signature="e#7703#7704#0" expanded="true" />
+                <element signature="e#7736#7737#0" expanded="true" />
+                <element signature="e#7785#7786#0" expanded="true" />
+                <element signature="e#7829#7830#0" expanded="true" />
+                <element signature="e#7862#7863#0" expanded="true" />
+                <element signature="e#7894#7895#0" expanded="true" />
+                <element signature="e#7941#7942#0" expanded="true" />
+                <element signature="e#7983#7984#0" expanded="true" />
+                <element signature="e#8012#8013#0" expanded="true" />
+                <element signature="e#8040#8041#0" expanded="true" />
+                <element signature="e#8079#8080#0" expanded="true" />
+                <element signature="e#8113#8114#0" expanded="true" />
+                <element signature="e#8162#8163#0" expanded="true" />
+                <element signature="e#8203#8204#0" expanded="true" />
+                <element signature="e#8251#8252#0" expanded="true" />
+                <element signature="e#8291#8292#0" expanded="true" />
+                <element signature="e#8326#8327#0" expanded="true" />
+                <element signature="e#8357#8358#0" expanded="true" />
+                <element signature="e#8407#8408#0" expanded="true" />
+                <element signature="e#8453#8454#0" expanded="true" />
+                <element signature="e#8495#8496#0" expanded="true" />
+                <element signature="e#8525#8526#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Wall.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Wall.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.1764708">
+              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,29 +193,22 @@
         <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/GameView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="106" column="59" selection-start-line="106" selection-start-column="59" selection-end-line="106" selection-end-column="59" />
+              <caret line="141" column="46" selection-start-line="141" selection-start-column="46" selection-end-line="141" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6797#6798#0" expanded="true" />
+                <element signature="e#6825#6826#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameModel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/GameModel.java">
+      <file leaf-file-name="Madness_PowerUp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Madness_PowerUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.482353">
-              <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-              <folding>
-                <element signature="e#7315#7316#0" expanded="true" />
-                <element signature="e#7347#7348#0" expanded="true" />
-                <element signature="e#7394#7395#0" expanded="true" />
-                <element signature="e#7436#7437#0" expanded="true" />
-                <element signature="e#7465#7466#0" expanded="true" />
-                <element signature="e#7493#7494#0" expanded="true" />
-                <element signature="e#7532#7533#0" expanded="true" />
-                <element signature="e#7566#7567#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -200,16 +239,19 @@
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/DoublePoints_PowerUp.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/ReduceSize_PowerUp.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/PowerUp.java" />
-        <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java" />
-        <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/InstructionsActivity.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/layout/score.xml" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/ButtonWithTouch.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/MenuActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/res/layout-large/main.xml" />
+        <option value="$PROJECT_DIR$/res/layout/score.xml" />
+        <option value="$PROJECT_DIR$/res/layout-large/score.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Madness_PowerUp.java" />
+        <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/GameView.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/GameModel.java" />
       </list>
@@ -246,8 +288,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -315,24 +355,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BounceOrLose" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BounceOrLose" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -368,6 +390,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -378,6 +402,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/res/drawable-hdpi" />
+      <recent name="$PROJECT_DIR$/res/layout-large" />
       <recent name="$PROJECT_DIR$/assets" />
     </key>
   </component>
@@ -674,7 +699,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -754,69 +779,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4559#4610#0" expanded="true" />
-            <element signature="e#4748#4799#0" expanded="true" />
-            <element signature="e#5759#6019#0" expanded="true" />
-            <element signature="e#6018#6019#0" expanded="true" />
-            <element signature="e#6141#6425#0" expanded="true" />
-            <element signature="e#6424#6425#0" expanded="true" />
-            <element signature="e#6645#6688#0" expanded="true" />
-            <element signature="e#6719#6762#0" expanded="true" />
-            <element signature="e#6800#6850#0" expanded="true" />
-            <element signature="e#6890#6942#0" expanded="true" />
-            <element signature="e#6984#7038#0" expanded="true" />
-            <element signature="e#7080#7134#0" expanded="true" />
-            <element signature="e#7169#7217#0" expanded="true" />
-            <element signature="e#7250#7295#0" expanded="true" />
-            <element signature="e#7330#7377#0" expanded="true" />
-            <element signature="e#7413#7461#0" expanded="true" />
-            <element signature="e#7498#7547#0" expanded="true" />
-            <element signature="e#7582#7629#0" expanded="true" />
-            <element signature="e#8160#9628#0" expanded="true" />
-            <element signature="e#9355#9602#0" expanded="true" />
-            <element signature="e#9601#9602#0" expanded="true" />
-            <element signature="e#9627#9628#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="151" selection-start-line="64" selection-start-column="151" selection-end-line="64" selection-end-column="151" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/GameModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="63" column="185" selection-start-line="63" selection-start-column="185" selection-end-line="63" selection-end-column="185" />
-          <folding>
-            <element signature="e#7315#7316#0" expanded="true" />
-            <element signature="e#7347#7348#0" expanded="true" />
-            <element signature="e#7394#7395#0" expanded="true" />
-            <element signature="e#7436#7437#0" expanded="true" />
-            <element signature="e#7465#7466#0" expanded="true" />
-            <element signature="e#7493#7494#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
-            <element signature="e#7566#7567#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -833,8 +800,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="69" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="69" />
           <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1793#1794#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2144#2145#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -851,30 +818,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4559#4610#0" expanded="true" />
-            <element signature="e#4748#4799#0" expanded="true" />
-            <element signature="e#5759#6019#0" expanded="true" />
-            <element signature="e#6018#6019#0" expanded="true" />
-            <element signature="e#6141#6425#0" expanded="true" />
-            <element signature="e#6424#6425#0" expanded="true" />
-            <element signature="e#6645#6688#0" expanded="true" />
-            <element signature="e#6719#6762#0" expanded="true" />
-            <element signature="e#6800#6850#0" expanded="true" />
-            <element signature="e#6890#6942#0" expanded="true" />
-            <element signature="e#6984#7038#0" expanded="true" />
-            <element signature="e#7080#7134#0" expanded="true" />
-            <element signature="e#7169#7217#0" expanded="true" />
-            <element signature="e#7250#7295#0" expanded="true" />
-            <element signature="e#7330#7377#0" expanded="true" />
-            <element signature="e#7413#7461#0" expanded="true" />
-            <element signature="e#7498#7547#0" expanded="true" />
-            <element signature="e#7582#7629#0" expanded="true" />
-            <element signature="e#8160#9628#0" expanded="true" />
-            <element signature="e#9355#9602#0" expanded="true" />
-            <element signature="e#9601#9602#0" expanded="true" />
-            <element signature="e#9627#9628#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -900,16 +844,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
-          <folding>
-            <element signature="e#7315#7316#0" expanded="true" />
-            <element signature="e#7347#7348#0" expanded="true" />
-            <element signature="e#7394#7395#0" expanded="true" />
-            <element signature="e#7436#7437#0" expanded="true" />
-            <element signature="e#7465#7466#0" expanded="true" />
-            <element signature="e#7493#7494#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
-            <element signature="e#7566#7567#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -926,8 +861,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
           <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1793#1794#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2144#2145#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -944,30 +879,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-          <folding>
-            <element signature="e#4559#4610#0" expanded="true" />
-            <element signature="e#4748#4799#0" expanded="true" />
-            <element signature="e#5759#6019#0" expanded="true" />
-            <element signature="e#6018#6019#0" expanded="true" />
-            <element signature="e#6141#6425#0" expanded="true" />
-            <element signature="e#6424#6425#0" expanded="true" />
-            <element signature="e#6645#6688#0" expanded="true" />
-            <element signature="e#6719#6762#0" expanded="true" />
-            <element signature="e#6800#6850#0" expanded="true" />
-            <element signature="e#6890#6942#0" expanded="true" />
-            <element signature="e#6984#7038#0" expanded="true" />
-            <element signature="e#7080#7134#0" expanded="true" />
-            <element signature="e#7169#7217#0" expanded="true" />
-            <element signature="e#7250#7295#0" expanded="true" />
-            <element signature="e#7330#7377#0" expanded="true" />
-            <element signature="e#7413#7461#0" expanded="true" />
-            <element signature="e#7498#7547#0" expanded="true" />
-            <element signature="e#7582#7629#0" expanded="true" />
-            <element signature="e#8160#9628#0" expanded="true" />
-            <element signature="e#9355#9602#0" expanded="true" />
-            <element signature="e#9601#9602#0" expanded="true" />
-            <element signature="e#9627#9628#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -993,16 +905,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7315#7316#0" expanded="true" />
-            <element signature="e#7347#7348#0" expanded="true" />
-            <element signature="e#7394#7395#0" expanded="true" />
-            <element signature="e#7436#7437#0" expanded="true" />
-            <element signature="e#7465#7466#0" expanded="true" />
-            <element signature="e#7493#7494#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
-            <element signature="e#7566#7567#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,8 +922,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
           <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1793#1794#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2144#2145#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1037,30 +940,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-          <folding>
-            <element signature="e#4559#4610#0" expanded="true" />
-            <element signature="e#4748#4799#0" expanded="true" />
-            <element signature="e#5759#6019#0" expanded="true" />
-            <element signature="e#6018#6019#0" expanded="true" />
-            <element signature="e#6141#6425#0" expanded="true" />
-            <element signature="e#6424#6425#0" expanded="true" />
-            <element signature="e#6645#6688#0" expanded="true" />
-            <element signature="e#6719#6762#0" expanded="true" />
-            <element signature="e#6800#6850#0" expanded="true" />
-            <element signature="e#6890#6942#0" expanded="true" />
-            <element signature="e#6984#7038#0" expanded="true" />
-            <element signature="e#7080#7134#0" expanded="true" />
-            <element signature="e#7169#7217#0" expanded="true" />
-            <element signature="e#7250#7295#0" expanded="true" />
-            <element signature="e#7330#7377#0" expanded="true" />
-            <element signature="e#7413#7461#0" expanded="true" />
-            <element signature="e#7498#7547#0" expanded="true" />
-            <element signature="e#7582#7629#0" expanded="true" />
-            <element signature="e#8160#9628#0" expanded="true" />
-            <element signature="e#9355#9602#0" expanded="true" />
-            <element signature="e#9601#9602#0" expanded="true" />
-            <element signature="e#9627#9628#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,16 +966,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7315#7316#0" expanded="true" />
-            <element signature="e#7347#7348#0" expanded="true" />
-            <element signature="e#7394#7395#0" expanded="true" />
-            <element signature="e#7436#7437#0" expanded="true" />
-            <element signature="e#7465#7466#0" expanded="true" />
-            <element signature="e#7493#7494#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
-            <element signature="e#7566#7567#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,8 +983,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
           <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1793#1794#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2144#2145#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1140,26 +1011,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Wall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Vector2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/DoublePoints_PowerUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1209,25 +1064,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
-          <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1793#1794#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.625">
@@ -1239,45 +1075,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1698112">
-          <caret line="47" column="0" selection-start-line="2" selection-start-column="14" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/score.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.792453">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#650#668#0" expanded="true" />
-            <element signature="e#1073#1093#0" expanded="true" />
-            <element signature="e#2095#2113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/InstructionsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7176471">
           <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.2941175">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,37 +1090,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1240#1547#0" expanded="true" />
             <element signature="e#1546#1547#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="233" column="47" selection-start-line="233" selection-start-column="47" selection-end-line="233" selection-end-column="47" />
-          <folding>
-            <element signature="e#4559#4610#0" expanded="true" />
-            <element signature="e#4748#4799#0" expanded="true" />
-            <element signature="e#5759#6019#0" expanded="true" />
-            <element signature="e#6018#6019#0" expanded="true" />
-            <element signature="e#6141#6425#0" expanded="true" />
-            <element signature="e#6424#6425#0" expanded="true" />
-            <element signature="e#6645#6688#0" expanded="true" />
-            <element signature="e#6719#6762#0" expanded="true" />
-            <element signature="e#6800#6850#0" expanded="true" />
-            <element signature="e#6890#6942#0" expanded="true" />
-            <element signature="e#6984#7038#0" expanded="true" />
-            <element signature="e#7080#7134#0" expanded="true" />
-            <element signature="e#7169#7217#0" expanded="true" />
-            <element signature="e#7250#7295#0" expanded="true" />
-            <element signature="e#7330#7377#0" expanded="true" />
-            <element signature="e#7413#7461#0" expanded="true" />
-            <element signature="e#7498#7547#0" expanded="true" />
-            <element signature="e#7582#7629#0" expanded="true" />
-            <element signature="e#8160#9628#0" expanded="true" />
-            <element signature="e#9355#9602#0" expanded="true" />
-            <element signature="e#9601#9602#0" expanded="true" />
-            <element signature="e#9627#9628#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1336,30 +1106,172 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/score.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.981132">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout-large/score.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6451613">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout-large/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8064516">
+          <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48387095">
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/DoublePoints_PowerUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="11" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1764708">
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="216" column="76" selection-start-line="216" selection-start-column="76" selection-end-line="216" selection-end-column="76" />
+          <folding>
+            <element signature="e#4559#4610#0" expanded="true" />
+            <element signature="e#4748#4799#0" expanded="true" />
+            <element signature="e#6645#6688#0" expanded="true" />
+            <element signature="e#6719#6762#0" expanded="true" />
+            <element signature="e#6800#6850#0" expanded="true" />
+            <element signature="e#6890#6942#0" expanded="true" />
+            <element signature="e#6984#7038#0" expanded="true" />
+            <element signature="e#7080#7134#0" expanded="true" />
+            <element signature="e#7169#7217#0" expanded="true" />
+            <element signature="e#7250#7295#0" expanded="true" />
+            <element signature="e#7330#7377#0" expanded="true" />
+            <element signature="e#7413#7461#0" expanded="true" />
+            <element signature="e#7498#7547#0" expanded="true" />
+            <element signature="e#7582#7629#0" expanded="true" />
+            <element signature="e#7671#7725#0" expanded="true" />
+            <element signature="e#7760#7807#0" expanded="true" />
+            <element signature="e#7843#7891#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/GameView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="59" selection-start-line="106" selection-start-column="59" selection-end-line="106" selection-end-column="59" />
+          <caret line="141" column="46" selection-start-line="141" selection-start-column="46" selection-end-line="141" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6797#6798#0" expanded="true" />
+            <element signature="e#6825#6826#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Madness_PowerUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Wall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/GameModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.482353">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
           <folding>
-            <element signature="e#7315#7316#0" expanded="true" />
-            <element signature="e#7347#7348#0" expanded="true" />
-            <element signature="e#7394#7395#0" expanded="true" />
-            <element signature="e#7436#7437#0" expanded="true" />
-            <element signature="e#7465#7466#0" expanded="true" />
-            <element signature="e#7493#7494#0" expanded="true" />
-            <element signature="e#7532#7533#0" expanded="true" />
-            <element signature="e#7566#7567#0" expanded="true" />
+            <element signature="e#7390#7391#0" expanded="true" />
+            <element signature="e#7417#7418#0" expanded="true" />
+            <element signature="e#7453#7454#0" expanded="true" />
+            <element signature="e#7481#7482#0" expanded="true" />
+            <element signature="e#7545#7546#0" expanded="true" />
+            <element signature="e#7587#7588#0" expanded="true" />
+            <element signature="e#7637#7638#0" expanded="true" />
+            <element signature="e#7669#7670#0" expanded="true" />
+            <element signature="e#7703#7704#0" expanded="true" />
+            <element signature="e#7736#7737#0" expanded="true" />
+            <element signature="e#7785#7786#0" expanded="true" />
+            <element signature="e#7829#7830#0" expanded="true" />
+            <element signature="e#7862#7863#0" expanded="true" />
+            <element signature="e#7894#7895#0" expanded="true" />
+            <element signature="e#7941#7942#0" expanded="true" />
+            <element signature="e#7983#7984#0" expanded="true" />
+            <element signature="e#8012#8013#0" expanded="true" />
+            <element signature="e#8040#8041#0" expanded="true" />
+            <element signature="e#8079#8080#0" expanded="true" />
+            <element signature="e#8113#8114#0" expanded="true" />
+            <element signature="e#8162#8163#0" expanded="true" />
+            <element signature="e#8203#8204#0" expanded="true" />
+            <element signature="e#8251#8252#0" expanded="true" />
+            <element signature="e#8291#8292#0" expanded="true" />
+            <element signature="e#8326#8327#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8407#8408#0" expanded="true" />
+            <element signature="e#8453#8454#0" expanded="true" />
+            <element signature="e#8495#8496#0" expanded="true" />
+            <element signature="e#8525#8526#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.91764706">
+          <caret line="76" column="21" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

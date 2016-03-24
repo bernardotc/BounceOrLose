@@ -30,6 +30,7 @@ public class GameModel implements Serializable {
     private Ball ball;
     private List<Wall> walls;
     private int powerUpCounter;
+    private int madnessCounter;
 
     public GameModel(int width, int height, boolean portrait) {
         // Set screen dimensions
@@ -75,7 +76,7 @@ public class GameModel implements Serializable {
         walls = new ArrayList<>();
         walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0));
         walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight));
-        powerUpCounter = 0;
+        powerUpCounter = madnessCounter = 0;
         powerUp = new PowerUp();
     }
 
@@ -91,6 +92,14 @@ public class GameModel implements Serializable {
             } else {
                 powerUp = new PowerUp();
             }
+        }
+
+        if (score / 50 > madnessCounter && powerUp.getType().equals(Constants.PowerUps.NONE)) {
+            System.out.println((goodClicks / (double) (goodClicks + badClicks)));
+            if (Math.random() <= (goodClicks / (double) (goodClicks + badClicks))) {
+                powerUp = new Madness_PowerUp();
+            }
+            madnessCounter++;
         }
 
         if (ball.checkBallInsideLimits(0, worldWidth)) {
@@ -112,7 +121,7 @@ public class GameModel implements Serializable {
             }
         } else if (gameState.equals(Constants.GameStates.COLLISION)) {
             if (!powerUp.getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
-                ball.increaseRadius();
+                ball.increaseRadius(1);
             }
             checkBallTouchingTwoWalls();
         } else if (gameState.equals(Constants.GameStates.CLICK)) {
@@ -126,11 +135,15 @@ public class GameModel implements Serializable {
             }
             if (!touching) {
                 gameState = Constants.GameStates.MOVING;
-            }
-            if (powerUp.getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
-                ball.reduceRadius();
+                if (powerUp.getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+                    ball.reduceRadius(5);
+                }
             }
             checkBallTouchingTwoWalls();
+        }
+
+        if (powerUp.getType().equals(Constants.PowerUps.MADNESS)) {
+            ball.increaseRadius(0.4);
         }
 
         powerUpCounter++;

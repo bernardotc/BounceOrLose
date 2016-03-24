@@ -211,6 +211,10 @@ public class BounceOrLoseActivity extends Activity {
         Constants.resumeMessage = getResources().getString(R.string.resumeMessage);
         Constants.restartMessage = getResources().getString(R.string.restartMessage);
         Constants.startMessage = getResources().getString(R.string.startMessage);
+        Constants.doubleClicksMessage = getResources().getString(R.string.doubleClicksMessage);
+        Constants.clickMessage = getResources().getString(R.string.clickMessage);
+        Constants.reduceMessage = getResources().getString(R.string.reduceMessage);
+        Constants.madnessMessage = getResources().getString(R.string.madnessMessage);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Constants.scorePaint.setTextSize(GameModel.getScreenWidthStatic() / 30);
@@ -219,6 +223,9 @@ public class BounceOrLoseActivity extends Activity {
             Constants.scorePaint.setTextSize(GameModel.getScreenWidthStatic() / 20);
             Constants.infoPaint.setTextSize(GameModel.getScreenWidthStatic() / 10);
         }
+
+        Typeface customFont = Typeface.createFromAsset(getAssets(), "Acidic.TTF");
+        Constants.infoPaint.setTypeface(customFont);
     }
 
     public void loadShowScore() {
@@ -241,7 +248,7 @@ public class BounceOrLoseActivity extends Activity {
                 textBackMenuView.setTypeface(customFont);
                 titleView.setTypeface(customFont);
                 textScore.setTypeface(customFont);
-                textScore.setText(textScore.getText() + " " + getModel().getGoodClicks());
+                textScore.setText(textScore.getText() + " " + getModel().getScore());
 
                 backMenuButton.setOnTouchListener(new ButtonWithTouch(imageBackMenyButton));
 

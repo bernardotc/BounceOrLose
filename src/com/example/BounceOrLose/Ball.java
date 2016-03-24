@@ -54,6 +54,10 @@ public class Ball implements Serializable {
 
         if (GameModel.getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
             c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.sickPaintBall);
+        } else if (GameModel.getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
+            c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.doublePaintBall);
+        } else if (GameModel.getPowerUp().getType().equals(Constants.PowerUps.MADNESS)) {
+            c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.madnessPaintBall);
         } else {
             c.drawCircle(x, y, (float) SCREEN_RADIUS, Constants.paintBall);
         }
@@ -63,13 +67,13 @@ public class Ball implements Serializable {
         position.addScaled(velocity, Constants.deltaTime);
     }
 
-    public void increaseRadius() {
-        radius += Constants.increaseRadiusFactor;
+    public void increaseRadius(double n) {
+        radius += Constants.increaseRadiusFactor * n;
         SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
     }
 
-    public void reduceRadius() {
-        radius -= Constants.reduceRadiusFactor;
+    public void reduceRadius(double n) {
+        radius -= Constants.reduceRadiusFactor * n;
         SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(radius), 1);
     }
 

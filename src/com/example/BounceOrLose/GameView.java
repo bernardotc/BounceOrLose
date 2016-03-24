@@ -17,6 +17,8 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
     private BounceOrLoseActivity controller;
     private Bitmap virus = BitmapFactory.decodeResource(getResources(), R.drawable.virus);
     private Bitmap virusReduce = BitmapFactory.decodeResource(getResources(), R.drawable.virus_reduce);
+    private Bitmap virusDouble = BitmapFactory.decodeResource(getResources(), R.drawable.virus_double);
+    private Bitmap virusMad = BitmapFactory.decodeResource(getResources(), R.drawable.virus_mad);
 
     public GameView(Context context) {
         super(context);
@@ -61,13 +63,29 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
         Ball b = controller.getModel().getBall();
         List<Wall> walls = controller.getModel().getWalls();
 
-        if (GameModel.getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+        if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
             b.draw(canvas, virusReduce);
+        } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
+            b.draw(canvas, virusDouble);
+        } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.MADNESS)) {
+            b.draw(canvas, virusMad);
         } else {
             b.draw(canvas, virus);
         }
         for (Wall w : walls) {
             w.draw(canvas);
+        }
+
+        if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+            drawMessage(Constants.reduceMessage, Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
+        } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
+            drawMessage(Constants.doubleClicksMessage, Constants.infoPaint, "", Constants.infoPaint, canvas);
+        } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.MADNESS)) {
+            drawMessage(Constants.madnessMessage, Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
+        }
+
+        if (controller.getModel().getGoodClicks() <= 5 && controller.getModel().getGameState().equals(Constants.GameStates.COLLISION)) {
+            drawMessage("", Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
         }
 
         Rect bounds = new Rect();
@@ -113,9 +131,15 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
             model.gameInit();
         } else if (model.getGameState().equals(Constants.GameStates.START)) {
             model.setGameState(Constants.GameStates.MOVING);
-        } else if (model.getGameState().equals(Constants.GameStates.MOVING)) {
+        } else if (model.getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+            model.setGoodClicks(model.getGoodClicks() + 1);
+            model.getBall().reduceRadius(1);
+        } else if (model.getPowerUp().getType().equals(Constants.PowerUps.MADNESS)) {
+            model.getBall().reduceRadius(5);
+            model.setGoodClicks(model.getGoodClicks() + 1);
+        } else {
             model.setBadClicks(model.getBadClicks() + 1);
-            model.getBall().increaseRadius();
+            model.getBall().increaseRadius(1);
         }
     }
 

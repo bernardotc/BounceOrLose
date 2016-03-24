@@ -17,4 +17,8 @@
     <string name="startMessage">Start Game</string>
     <string name="backMenu">Go to Main Menu</string>
     <string name="finalScore">Your score is:</string>
+    <string name="doubleClicksMessage">Double points!</string>
+    <string name="clickMessage">Click!</string>
+    <string name="reduceMessage">Kill the virus!</string>
+    <string name="madnessMessage">Virus is mad!</string>
 </resources>
