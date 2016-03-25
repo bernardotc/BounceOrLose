@@ -2,13 +2,16 @@ package com.example.VirusAttack;
 
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 
 /**
  * Created by bernardot on 2/10/16.
  */
 public class Constants {
+    // App constants
+    static MediaPlayer backgroundMusic;
 
-    // BounceOrLoseActivty Constants
+    // VirusActivty Constants
     static String modelKey;
     static String saveFile;
     static int delay = 20;
@@ -59,8 +62,11 @@ public class Constants {
 
     // GameModel Constants
     enum GameStates {
-        COLLISION, MOVING, CLICK, END, PAUSED, START
+        COLLISION, MOVING, CLICK, END, PAUSED, START, STOP
     }
+
+    static MediaPlayer monsterSuction;
+    static MediaPlayer monsterMad;
 
     static double worldWidth = 10;
     static double ballScaleFactor = 20;

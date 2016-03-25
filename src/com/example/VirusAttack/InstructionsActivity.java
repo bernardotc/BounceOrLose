@@ -2,6 +2,7 @@ package com.example.VirusAttack;
 
 import android.app.Activity;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,5 +43,28 @@ public class InstructionsActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    protected void onResume() {
+        super.onResume();
+        if (!Constants.backgroundMusic.isPlaying()) {
+            try {
+                Constants.backgroundMusic.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        Constants.backgroundMusic.start();
+                    }
+                });
+                Constants.backgroundMusic.prepareAsync();
+            } catch (Exception e) {
+                Constants.backgroundMusic.start();
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Constants.backgroundMusic.pause();
     }
 }

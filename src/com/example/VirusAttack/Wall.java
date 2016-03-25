@@ -1,5 +1,6 @@
 package com.example.VirusAttack;
 
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import java.io.Serializable;
@@ -62,11 +63,22 @@ public class Wall implements Serializable {
         return result;
     }
 
-    public void draw(Canvas c) {
+    public void draw(Canvas c, Bitmap membrane) {
         int x1 = GameModel.convertWorldXtoScreenX(startPosition.getX());
         int y1 = GameModel.convertWorldYtoScreenY(startPosition.getY());
         int x2 = GameModel.convertWorldXtoScreenX(endPosition.getX());
         int y2 = GameModel.convertWorldYtoScreenY(endPosition.getY());
+
+        int timesImage = (int) Math.ceil(GameModel.getScreenHeightStatic() / (double) membrane.getHeight());
+        if (x1 < GameModel.getScreenWidthStatic() / 2) {
+            for (int x = 0; x < timesImage; x++) {
+                c.drawBitmap(membrane, x1 - membrane.getWidth(), membrane.getHeight() * x, null);
+            }
+        } else {
+            for (int x = 0; x < timesImage; x++) {
+                c.drawBitmap(membrane, x1, membrane.getHeight() * x, null);
+            }
+        }
         c.drawLine(x1, y1, x2, y2, Constants.paintWall);
     }
 }

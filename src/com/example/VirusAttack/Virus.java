@@ -28,6 +28,11 @@ public class Virus implements Serializable {
         return radius;
     }
 
+    public void setRadius(double radius) {
+        this.radius = radius;
+        SCREEN_RADIUS = Math.max(GameModel.convertWorldLengthToScreenLength(this.radius), 1);
+    }
+
     public void setPosition(Vector2D position) {
         this.position = position;
     }

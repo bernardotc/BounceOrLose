@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
@@ -37,6 +38,12 @@ public class VirusActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Create sounds
+        Constants.monsterSuction = MediaPlayer.create(getApplicationContext(), R.raw.monster_suction);
+        Constants.monsterSuction.setLooping(true);
+        Constants.monsterMad = MediaPlayer.create(getApplicationContext(), R.raw.monster_mad);
+        Constants.monsterMad.setLooping(true);
+
         // Get screen resolution
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -60,8 +67,13 @@ public class VirusActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        //loadGame();
-        model.gameInit();
+        //setContentView(view);
+        if (!Constants.backgroundMusic.isPlaying()) {
+            Constants.backgroundMusic.start();
+            loadGame();
+        } else {
+            model.gameInit();
+        }
         game = new GameThread();
         game.start();
     }
@@ -69,9 +81,12 @@ public class VirusActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (!getModel().getGameState().equals(Constants.GameStates.END) && !getModel().getGameState().equals(Constants.GameStates.START))
+        Constants.backgroundMusic.pause();
+        if (!getModel().getGameState().equals(Constants.GameStates.END) && !getModel().getGameState().equals(Constants.GameStates.START)) {
             getModel().setGameState(Constants.GameStates.PAUSED);
-        //saveGame();
+        }
+        saveGame();
+        getModel().setGameState(Constants.GameStates.STOP);
     }
 
     public void saveGame() {
@@ -124,6 +139,7 @@ public class VirusActivity extends Activity {
         } else {
             model = game;
         }
+        System.out.println("l " + model.getVirus().getVelocity().getX());
     }
 
     class GameThread extends Thread {
@@ -134,10 +150,25 @@ public class VirusActivity extends Activity {
                 try {
                     getModel().update();
                     if (getModel().getGameState().equals(Constants.GameStates.END)) {
+                        if (Constants.monsterMad.isPlaying()) {
+                            Constants.monsterMad.pause();
+                        }
+                        if (Constants.monsterSuction.isPlaying()) {
+                            Constants.monsterSuction.pause();
+                        }
                         loadShowScore();
                         join();
+                    } else if (getModel().getGameState().equals(Constants.GameStates.STOP)) {
+                        if (Constants.monsterMad.isPlaying()) {
+                            Constants.monsterMad.pause();
+                        }
+                        if (Constants.monsterSuction.isPlaying()) {
+                            Constants.monsterSuction.pause();
+                        }
+                        join();
+                    } else {
+                        view.draw();
                     }
-                    view.draw();
                     Thread.sleep(Constants.delay);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -179,8 +210,9 @@ public class VirusActivity extends Activity {
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            getModel().setGameState(Constants.GameStates.STOP);
                             Intent myIntent = new Intent(VirusActivity.this, MenuActivity.class);
-                            myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(myIntent);
                         }
                     });
@@ -257,8 +289,9 @@ public class VirusActivity extends Activity {
                 backMenuButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //Call GameActivity to start the game
-                        finish();
+                        Intent myIntent = new Intent(VirusActivity.this, MenuActivity.class);
+                        myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(myIntent);
                     }
                 });
             }

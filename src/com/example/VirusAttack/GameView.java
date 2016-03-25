@@ -19,6 +19,7 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
     private Bitmap virusReduce;
     private Bitmap virusDouble;
     private Bitmap virusMad;
+    private Bitmap membrane;
 
     public GameView(Context context) {
         super(context);
@@ -41,6 +42,7 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
         virusReduce = BitmapFactory.decodeResource(getResources(), R.drawable.virus_reduce);
         virusDouble = BitmapFactory.decodeResource(getResources(), R.drawable.virus_double);
         virusMad = BitmapFactory.decodeResource(getResources(), R.drawable.virus_mad);
+        membrane = BitmapFactory.decodeResource(getResources(), R.drawable.membrane);
         setOnTouchListener(this);
         setOnClickListener(this);
     }
@@ -77,19 +79,7 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
             b.draw(canvas, virus);
         }
         for (Wall w : walls) {
-            w.draw(canvas);
-        }
-
-        if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
-            drawMessage(Constants.reduceMessage, Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
-        } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
-            drawMessage(Constants.doubleClicksMessage, Constants.infoPaint, "", Constants.infoPaint, canvas);
-        } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.MADNESS)) {
-            drawMessage(Constants.madnessMessage, Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
-        }
-
-        if (controller.getModel().getGoodClicks() <= 5 && controller.getModel().getGameState().equals(Constants.GameStates.COLLISION)) {
-            drawMessage("", Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
+            w.draw(canvas, membrane);
         }
 
         Rect bounds = new Rect();
@@ -98,10 +88,22 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
         canvas.drawText(String.valueOf(controller.getModel().getScore()), GameModel.getScreenWidthStatic() / 2 - width / 2, GameModel.getScreenHeightStatic() / 16, Constants.scorePaint);
         if (controller.getModel().getGameState().equals(Constants.GameStates.PAUSED)) {
             drawMessage(Constants.pauseMessage, Constants.infoPaint, Constants.resumeMessage, Constants.infoPaint, canvas);
-        } else if (controller.getModel().getGameState().equals(Constants.GameStates.END)) {
+        } /*else if (controller.getModel().getGameState().equals(Constants.GameStates.END)) {
             drawMessage(Constants.endMessage, Constants.infoPaint, Constants.restartMessage, Constants.infoPaint, canvas);
         } else if (controller.getModel().getGameState().equals(Constants.GameStates.START)) {
             drawMessage(Constants.titleMessage, Constants.infoPaint, Constants.startMessage, Constants.infoPaint, canvas);
+        } */else {
+            if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
+                drawMessage(Constants.reduceMessage, Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
+            } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
+                drawMessage(Constants.doubleClicksMessage, Constants.infoPaint, "", Constants.infoPaint, canvas);
+            } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.MADNESS)) {
+                drawMessage(Constants.madnessMessage, Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
+            }
+
+            if (controller.getModel().getGoodClicks() <= 5 && controller.getModel().getGameState().equals(Constants.GameStates.COLLISION)) {
+                drawMessage("", Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
+            }
         }
     }
 
@@ -128,6 +130,9 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
             }
             model.setGoodClicks(model.getGoodClicks() + 1);
             model.setGameState(Constants.GameStates.CLICK);
+            if (Constants.monsterSuction.isPlaying()) {
+                Constants.monsterSuction.pause();
+            }
         } else if (model.getGameState().equals(Constants.GameStates.PAUSED)) {
             model.setGameState(Constants.GameStates.MOVING);
         } else if (model.getGameState().equals(Constants.GameStates.END)) {

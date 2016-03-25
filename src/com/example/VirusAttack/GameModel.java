@@ -66,16 +66,20 @@ public class GameModel implements Serializable {
         worldHeightStatic = worldHeight;
 
         // Set the game state and create objects.
+        virus = new Virus(worldWidth / 2, worldHeight / 2 + 1, Constants.ballInitialVelocityX, 0, worldWidth / ballScaleFactor);
+        walls = new ArrayList<>();
+        walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0));
+        walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight));
+
         gameInit();
     }
 
     public void gameInit() {
         gameState = Constants.GameStates.MOVING;
+        virus.setPosition(new Vector2D(worldWidth / 2, worldHeight / 2 + 1));
+        virus.setVelocity(new Vector2D(Constants.ballInitialVelocityX, 0));
+        virus.setRadius(worldWidth / ballScaleFactor);
         goodClicks = badClicks = score = 0;
-        virus = new Virus(worldWidth / 2, worldHeight / 2 + 1, Constants.ballInitialVelocityX, 0, worldWidth / ballScaleFactor);
-        walls = new ArrayList<>();
-        walls.add(new Wall(worldWidth / wallScaleFactor + differenceFictionalReal / 2, worldHeight, worldWidth / wallScaleFactor + differenceFictionalReal / 2, 0));
-        walls.add(new Wall(worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, 0, worldWidth * (1 - (1 / wallScaleFactor)) - differenceFictionalReal / 2, worldHeight));
         powerUpCounter = madnessCounter = 0;
         powerUp = new PowerUp();
     }
@@ -83,6 +87,9 @@ public class GameModel implements Serializable {
     public void update() {
         if (!gameState.equals(Constants.GameStates.START) && !gameState.equals(Constants.GameStates.END) && !gameState.equals(Constants.GameStates.PAUSED) && powerUpCounter >= powerUp.getDuration()) {
             powerUpCounter = 0;
+            if (Constants.monsterMad.isPlaying()) {
+                Constants.monsterMad.pause();
+            }
             if (powerUp.getType().equals(Constants.PowerUps.NONE)) {
                 if (Math.random() <= Constants.doublePointsProbability) {
                     powerUp = new DoublePoints_PowerUp();
@@ -98,6 +105,9 @@ public class GameModel implements Serializable {
             System.out.println((goodClicks / (double) (goodClicks + badClicks)));
             if (Math.random() <= (goodClicks / (double) (goodClicks + badClicks))) {
                 powerUp = new Madness_PowerUp();
+                if (!Constants.monsterMad.isPlaying()) {
+                    Constants.monsterMad.start();
+                }
             }
             madnessCounter++;
         }
@@ -122,6 +132,9 @@ public class GameModel implements Serializable {
         } else if (gameState.equals(Constants.GameStates.COLLISION)) {
             if (!powerUp.getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
                 virus.increaseRadius(1);
+                if (!Constants.monsterSuction.isPlaying()) {
+                    Constants.monsterSuction.start();
+                }
             }
             checkBallTouchingTwoWalls();
         } else if (gameState.equals(Constants.GameStates.CLICK)) {
