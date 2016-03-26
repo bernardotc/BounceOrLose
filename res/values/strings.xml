@@ -5,6 +5,7 @@
     <string name="instructions">A virus has been spotted in your system. Help your cells defend against this virus by CLICKING your screen whenever the virus is touching one of your cells. Be careful, the vius gets bigger when feeding from one of your cells. If the virus is big enough to enter one of your cells or touch both of them... sorry but you are ill and unable to keep playing. Watch out for the behaviour of the virus!</string>
     <string name="modelKey">Model</string>
     <string name="saveFile">savedGameData</string>
+    <string name="saveVitaminsFile">vitaminsData</string>
     <string name="backTitleDialog">Warning! You will lose your progress.</string>
     <string name="backMessageDialog">Are you sure?</string>
     <string name="backMessagePositive">Unfortunately yes.</string>
@@ -22,4 +23,9 @@
     <string name="reduceMessage">Kill the virus!</string>
     <string name="madnessMessage">Virus is mad!</string>
     <string name="instructionsTitle">Your immune system is under attack!</string>
+    <string name="newVitamins">Vitamins won:</string>
+    <string name="goodClicks">Good clicks:</string>
+    <string name="badClicks">Bad clicks:</string>
+    <string name="accuracy">Accuracy:</string>
+    <string name="vitamins">100</string>
 </resources>

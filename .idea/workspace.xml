@@ -35,86 +35,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dfd3886-91d3-4abb-9eea-f5946a1a916e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/membrane.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus_mad.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/raw/background_sound.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/raw/monster_mad.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/raw/monster_suction.mp3" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/BuildConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/ButtonWithTouch.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/Constants$GameStates.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/Constants$PowerUps.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/Constants.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/DoublePoints_PowerUp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/GameModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/GameView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/InstructionsActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/InstructionsActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/Madness_PowerUp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/MenuActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/MenuActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/MenuActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/PowerUp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/ReduceSize_PowerUp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/Vector2D.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/Virus.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/VirusActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/VirusActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/VirusActivity$3$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/VirusActivity$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/VirusActivity$GameThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/VirusActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/BounceOrLose/com/example/VirusAttack/Wall.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/virus_mad.jpg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/button_blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus_launcher.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/vitamins.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/VirusAttack.apk" afterPath="$PROJECT_DIR$/out/production/VirusAttack/VirusAttack.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/VirusAttack.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/VirusAttack/VirusAttack.unaligned.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/ButtonWithTouch.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/ButtonWithTouch.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Constants$GameStates.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Constants$GameStates.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Constants$PowerUps.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Constants$PowerUps.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Constants.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/GameModel.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/GameModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/GameView.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/GameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/InstructionsActivity$1.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/InstructionsActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/InstructionsActivity.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/InstructionsActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Madness_PowerUp.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Madness_PowerUp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity$1.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity$2.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity$3.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/MenuActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$drawable.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$id.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$layout.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$layout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$raw.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$raw.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$string.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R$string.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Virus.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Virus.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$1.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$2.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$3$1.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$3$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$3.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$GameThread.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity$GameThread.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/VirusActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Wall.class" afterPath="$PROJECT_DIR$/out/production/VirusAttack/com/example/VirusAttack/Wall.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/virus.jpeg" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/virus_double.jpeg" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus_double.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/virus_reduce.jpeg" afterPath="$PROJECT_DIR$/res/drawable-hdpi/virus_reduce.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/instructions.xml" afterPath="$PROJECT_DIR$/res/layout/instructions.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout-large/main.xml" afterPath="$PROJECT_DIR$/res/layout-large/main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout-large/score.xml" afterPath="$PROJECT_DIR$/res/layout-large/score.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/score.xml" afterPath="$PROJECT_DIR$/res/layout/score.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/Constants.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/GameModel.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/GameModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/GameView.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/GameView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/InstructionsActivity.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/InstructionsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/Madness_PowerUp.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/Madness_PowerUp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/MenuActivity.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/MenuActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/Virus.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/Virus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/VirusAttack/Wall.java" afterPath="$PROJECT_DIR$/src/com/example/VirusAttack/Wall.java" />
     </list>
     <ignored path="BounceOrLose.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -146,59 +103,66 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ic_launcher.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ic_launcher.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ic_launcher.png" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ic_launcher.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Virus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/Virus.java">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="81" />
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VirusActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MenuActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/MenuActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="116" column="37" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
+              <folding>
+                <element signature="e#1116#1167#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout-large/main.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.018868">
+              <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+              <folding>
+                <element signature="e#2123#2141#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.6792452">
+              <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
+              <folding>
+                <element signature="e#643#661#0" expanded="true" />
+                <element signature="e#2115#2133#0" expanded="true" />
+                <element signature="e#3282#3304#0" expanded="true" />
+                <element signature="e#4479#4505#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VirusActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="169" column="36" selection-start-line="169" selection-start-column="36" selection-end-line="169" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/GameView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.602353">
+              <caret line="117" column="39" selection-start-line="117" selection-start-column="39" selection-end-line="117" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -231,14 +195,11 @@
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/ReduceSize_PowerUp.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/PowerUp.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/ButtonWithTouch.java" />
-        <option value="$PROJECT_DIR$/res/layout-large/score.xml" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/BounceOrLoseActivity.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Ball.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/GameView.java" />
-        <option value="$PROJECT_DIR$/res/layout-large/main.xml" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/MenuActivity.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout-large/instructions.xml" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/InstructionsActivity.java" />
         <option value="$PROJECT_DIR$/src/com/example/BounceOrLose/Madness_PowerUp.java" />
@@ -249,17 +210,21 @@
         <option value="$PROJECT_DIR$/src/com/example/VirusAttack/Virus.java" />
         <option value="$PROJECT_DIR$/src/com/example/VirusAttack/Wall.java" />
         <option value="$PROJECT_DIR$/src/com/example/VirusAttack/MusicService.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/example/VirusAttack/InstructionsActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/example/VirusAttack/MenuActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/example/VirusAttack/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/example/VirusAttack/GameView.java" />
         <option value="$PROJECT_DIR$/src/com/example/VirusAttack/GameModel.java" />
         <option value="$PROJECT_DIR$/src/com/example/VirusAttack/Madness_PowerUp.java" />
-        <option value="$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/res/layout/score.xml" />
         <option value="$PROJECT_DIR$/res/layout/instructions.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/layout-large/score.xml" />
+        <option value="$PROJECT_DIR$/res/layout/score.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/VirusAttack/Constants.java" />
+        <option value="$PROJECT_DIR$/assets/vitamins.txt" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/res/layout-large/main.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/VirusAttack/MenuActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java" />
       </list>
     </option>
   </component>
@@ -329,7 +294,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VirusAttack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VirusAttack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VirusAttack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -349,8 +332,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res/raw" />
       <recent name="$PROJECT_DIR$/res/drawable-hdpi" />
+      <recent name="$PROJECT_DIR$/res/raw" />
       <recent name="$PROJECT_DIR$/res/layout-large" />
       <recent name="$PROJECT_DIR$/assets" />
     </key>
@@ -728,14 +711,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -852,32 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout-large/score.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.45283">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout-large/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.1886792">
-          <caret line="63" column="41" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
-          <folding>
-            <element signature="e#643#661#0" expanded="true" />
-            <element signature="e#1707#1729#0" expanded="true" />
-            <element signature="e#2905#2931#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/ButtonWithTouch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43764704">
@@ -956,38 +905,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/MenuActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="104" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="31" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16042781">
-          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/InstructionsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1052,64 +969,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="36" selection-start-line="169" selection-start-column="36" selection-end-line="169" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/instructions.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9005376">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/score.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4032258">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/GameModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="178" column="16" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1124,9 +989,128 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29925188">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/GameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="13" selection-start-line="134" selection-start-column="13" selection-end-line="134" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/instructions.xml">
+      <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.754717">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout-large/score.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8113208">
+          <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+          <folding>
+            <element signature="e#2753#2774#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/score.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43548387">
+          <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+          <folding>
+            <element signature="e#2753#2774#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87967914">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6792452">
+          <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
+          <folding>
+            <element signature="e#643#661#0" expanded="true" />
+            <element signature="e#2115#2133#0" expanded="true" />
+            <element signature="e#3282#3304#0" expanded="true" />
+            <element signature="e#4479#4505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout-large/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.018868">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <element signature="e#2123#2141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/GameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="178" column="16" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/MenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="37" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
+          <folding>
+            <element signature="e#1116#1167#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/VirusAttack/VirusActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.602353">
+          <caret line="117" column="39" selection-start-line="117" selection-start-column="39" selection-end-line="117" selection-end-column="39" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

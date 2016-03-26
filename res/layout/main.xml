@@ -16,6 +16,46 @@
               android:textSize="45sp"/>
 
     <RelativeLayout
+            android:id="@+id/vitamins_box"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+        <ImageView
+                android:id="@+id/img_box"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/button_blue"/>
+
+        <ImageView
+                android:id="@+id/img_vitamin"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vitamins"/>
+
+        <TextView
+                android:id="@+id/text_vitamin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_horizontal"
+                android:text="@string/vitamins"
+                android:textSize="14sp"
+                android:textColor="#DBED7E"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
             android:id="@+id/button_start"
             android:layout_width="200dp"
             android:layout_height="60dp"

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -18,10 +19,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.text.DecimalFormat;
 
 public class VirusActivity extends Activity {
 
@@ -112,6 +111,36 @@ public class VirusActivity extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void saveVitamins(int additionalVitamins) {
+        int vitamins = loadVitamins();
+        vitamins += additionalVitamins;
+        try {
+            FileOutputStream out = openFileOutput(Constants.vitaminsSavedFile, Context.MODE_PRIVATE);
+            ObjectOutputStream obj = new ObjectOutputStream(out);
+            System.out.println(vitamins);
+            obj.writeInt(vitamins);
+            obj.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int loadVitamins() {
+        int vitamins = 0;
+        try {
+            FileInputStream in = openFileInput(Constants.vitaminsSavedFile);
+            ObjectInputStream obj = new ObjectInputStream(in);
+            vitamins = obj.readInt();
+            System.out.println(vitamins);
+            obj.close();
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vitamins;
     }
 
     @Override
@@ -235,6 +264,7 @@ public class VirusActivity extends Activity {
     public void setStringSizeConstants() {
         Constants.modelKey = getResources().getString(R.string.modelKey);
         Constants.saveFile = getResources().getString(R.string.saveFile);
+
         Constants.backTitleDialog = getResources().getString(R.string.backTitleDialog);
         Constants.backMessageDialog = getResources().getString(R.string.backMessageDialog);
         Constants.backMessagePositive = getResources().getString(R.string.backMessagePositive);
@@ -269,6 +299,10 @@ public class VirusActivity extends Activity {
                 RelativeLayout backMenuButton;
                 ImageView imageBackMenyButton;
                 TextView textScore;
+                TextView textGoodClicks;
+                TextView textBadClicks;
+                TextView textAccuracy;
+                TextView textNewVitamins;
                 TextView textBackMenuView;
                 TextView titleView;
 
@@ -277,12 +311,28 @@ public class VirusActivity extends Activity {
                 imageBackMenyButton = (ImageView) findViewById(R.id.img_button);
                 textBackMenuView = (TextView) findViewById(R.id.text_menu);
                 textScore = (TextView) findViewById(R.id.score_game);
+                textGoodClicks = (TextView) findViewById(R.id.goodClicks_game);
+                textBadClicks = (TextView) findViewById(R.id.badClicks_game);
+                textAccuracy = (TextView) findViewById(R.id.accuracy_game);
+                textNewVitamins = (TextView) findViewById(R.id.totalVitamins_game);
                 titleView = (TextView) findViewById(R.id.title_game);
                 Typeface customFont = Typeface.createFromAsset(getAssets(), "Acidic.TTF");
                 textBackMenuView.setTypeface(customFont);
                 titleView.setTypeface(customFont);
                 textScore.setTypeface(customFont);
+                textGoodClicks.setTypeface(customFont);
+                textBadClicks.setTypeface(customFont);
+                textAccuracy.setTypeface(customFont);
+                textNewVitamins.setTypeface(customFont);
+
                 textScore.setText(textScore.getText() + " " + getModel().getScore());
+                textGoodClicks.setText(textGoodClicks.getText() + " " + getModel().getGoodClicks());
+                textBadClicks.setText(textBadClicks.getText() + " " + getModel().getBadClicks());
+                double accuracy = getModel().getGoodClicks() / (double) (getModel().getGoodClicks() + getModel().getBadClicks()) * 100;
+                textAccuracy.setText(textAccuracy.getText() + " " + new DecimalFormat("#.00").format(accuracy) + "%");
+                int newVitamins = (int) (getModel().getScore() * accuracy / 100);
+                textNewVitamins.setText(textNewVitamins.getText() + " " + newVitamins);
+                saveVitamins(newVitamins);
 
                 backMenuButton.setOnTouchListener(new ButtonWithTouch(imageBackMenyButton));
 

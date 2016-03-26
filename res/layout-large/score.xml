@@ -24,11 +24,51 @@
               android:text="@string/finalScore"
               android:textSize="50sp"/>
 
+    <TextView android:id="@+id/goodClicks_game"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="390dp"
+              android:text="@string/goodClicks"
+              android:textColor="#FFA500"
+              android:textSize="40sp"/>
+
+    <TextView android:id="@+id/badClicks_game"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="440dp"
+              android:text="@string/badClicks"
+              android:textColor="#FFA500"
+              android:textSize="40sp"/>
+
+    <TextView android:id="@+id/accuracy_game"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="490dp"
+              android:text="@string/accuracy"
+              android:textColor="#FFA500"
+              android:textSize="40sp"/>
+
+    <TextView android:id="@+id/totalVitamins_game"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="550dp"
+              android:text="@string/newVitamins"
+              android:textColor="#FFA500"
+              android:textSize="50sp"/>
+
     <RelativeLayout
             android:id="@+id/button_menu"
             android:layout_width="400dp"
             android:layout_height="110dp"
-            android:layout_marginTop="550dp"
+            android:layout_marginTop="670dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true">
 

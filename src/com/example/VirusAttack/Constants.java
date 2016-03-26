@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 public class Constants {
     // App constants
     static MediaPlayer backgroundMusic;
+    static String vitaminsSavedFile;
 
     // VirusActivty Constants
     static String modelKey;

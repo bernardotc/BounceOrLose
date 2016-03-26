@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
 /**
  * Created by bernardot on 3/23/16.
  */
@@ -19,10 +22,11 @@ public class MenuActivity extends Activity {
     ImageView imageStartButton;
     TextView textStartView;
     TextView titleView;
+    TextView vitaminsView;
 
-    RelativeLayout intructionsButton;
-    ImageView imageIntructionsButton;
-    TextView textIntructionsView;
+    RelativeLayout instructionsButton;
+    ImageView imageInstructionsButton;
+    TextView textInstructionsView;
 
     boolean otherActivity = false;
 
@@ -33,20 +37,25 @@ public class MenuActivity extends Activity {
 
         Constants.backgroundMusic = MediaPlayer.create(getApplicationContext(), R.raw.background_sound);
         Constants.backgroundMusic.setLooping(true);
+        Constants.vitaminsSavedFile = getResources().getString(R.string.saveVitaminsFile);
 
         startButton = (RelativeLayout) findViewById(R.id.button_start);
         imageStartButton = (ImageView) findViewById(R.id.img_button);
         textStartView = (TextView) findViewById(R.id.text_start);
         titleView = (TextView) findViewById(R.id.title_game);
 
-        intructionsButton = (RelativeLayout) findViewById(R.id.button_instructions);
-        imageIntructionsButton = (ImageView) findViewById(R.id.img_buttonInstructions);
-        textIntructionsView = (TextView) findViewById(R.id.text_instructions);
+        instructionsButton = (RelativeLayout) findViewById(R.id.button_instructions);
+        imageInstructionsButton = (ImageView) findViewById(R.id.img_buttonInstructions);
+        textInstructionsView = (TextView) findViewById(R.id.text_instructions);
 
         Typeface customFont = Typeface.createFromAsset(getAssets(), "Acidic.TTF");
         textStartView.setTypeface(customFont);
         titleView.setTypeface(customFont);
-        textIntructionsView.setTypeface(customFont);
+        textInstructionsView.setTypeface(customFont);
+
+        vitaminsView = (TextView) findViewById(R.id.text_vitamin);
+        int vitamins = loadVitamins();
+        vitaminsView.setText(String.valueOf(vitamins));
 
         startButton.setOnTouchListener(new ButtonWithTouch(imageStartButton));
 
@@ -60,9 +69,9 @@ public class MenuActivity extends Activity {
             }
         });
 
-        intructionsButton.setOnTouchListener(new ButtonWithTouch(imageIntructionsButton));
+        instructionsButton.setOnTouchListener(new ButtonWithTouch(imageInstructionsButton));
 
-        intructionsButton.setOnClickListener(new View.OnClickListener() {
+        instructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 otherActivity = true;
@@ -98,5 +107,19 @@ public class MenuActivity extends Activity {
         if (!otherActivity) {
             Constants.backgroundMusic.pause();
         }
+    }
+
+    public int loadVitamins() {
+        int vitamins = 0;
+        try {
+            FileInputStream in = openFileInput(Constants.vitaminsSavedFile);
+            ObjectInputStream obj = new ObjectInputStream(in);
+            vitamins = obj.readInt();
+            obj.close();
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vitamins;
     }
 }
