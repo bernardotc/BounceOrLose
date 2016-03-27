@@ -6,6 +6,7 @@
     <string name="modelKey">Model</string>
     <string name="saveFile">savedGameData</string>
     <string name="saveVitaminsFile">vitaminsData</string>
+    <string name="upgradesFile">upgradesData</string>
     <string name="backTitleDialog">Warning! You will lose your progress.</string>
     <string name="backMessageDialog">Are you sure?</string>
     <string name="backMessagePositive">Unfortunately yes.</string>
@@ -28,4 +29,16 @@
     <string name="badClicks">Bad clicks:</string>
     <string name="accuracy">Accuracy:</string>
     <string name="vitamins">100</string>
+    <string name="store">Immune Store</string>
+    <string name="upgradeMessage">Upgrade!</string>
+    <string name="LevelMessage">Level</string>
+    <string name="timeMessage">Duration:</string>
+    <string name="secondsMessage">seconds.</string>
+    <string name="probabilityMessage">Probability:</string>
+    <string name="postProbabilityMessage">every 50 points.</string>
+    <string name="secondMessage">every 1 second.</string>
+    <string name="toUpgradeMessage">-></string>
+    <string name="doubleUpTitle">Double Points</string>
+    <string name="reduceTitle">Reduce Virus Size</string>
+    <string name="madnessTitle">Control Virus Madness</string>
 </resources>

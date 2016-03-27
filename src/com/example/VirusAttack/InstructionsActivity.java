@@ -1,6 +1,7 @@
 package com.example.VirusAttack;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -35,12 +36,15 @@ public class InstructionsActivity extends Activity {
         titleInstructionsView.setTypeface(customFont);
         textBackView.setTypeface(customFont);
 
-        backButton.setOnTouchListener(new ButtonWithTouch(imageBackButton));
+        backButton.setOnTouchListener(new ButtonWithTouch(imageBackButton, false));
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent myIntent = new Intent(InstructionsActivity.this, MenuActivity.class);
+                //myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(myIntent);
             }
         });
     }

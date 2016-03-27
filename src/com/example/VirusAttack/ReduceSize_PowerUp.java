@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class ReduceSize_PowerUp extends PowerUp implements Serializable {
     public ReduceSize_PowerUp() {
         super();
-        setDuration(500);
+        setDuration(Constants.reduceSizeTime);
         setType(Constants.PowerUps.REDUCE_SIZE);
     }
 }

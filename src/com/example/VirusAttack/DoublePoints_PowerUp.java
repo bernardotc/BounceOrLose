@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class DoublePoints_PowerUp extends PowerUp implements Serializable {
     public DoublePoints_PowerUp() {
         super();
-        setDuration(500);
+        setDuration(Constants.doublePointsTime);
         setType(Constants.PowerUps.DOUBLE_POINTS);
     }
 }

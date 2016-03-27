@@ -69,6 +69,7 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
         Virus b = controller.getModel().getVirus();
         List<Wall> walls = controller.getModel().getWalls();
 
+        // Draw the corresponding virus
         if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
             b.draw(canvas, virusReduce);
         } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
@@ -88,11 +89,8 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
         canvas.drawText(String.valueOf(controller.getModel().getScore()), GameModel.getScreenWidthStatic() / 2 - width / 2, GameModel.getScreenHeightStatic() / 16, Constants.scorePaint);
         if (controller.getModel().getGameState().equals(Constants.GameStates.PAUSED)) {
             drawMessage(Constants.pauseMessage, Constants.infoPaint, Constants.resumeMessage, Constants.infoPaint, canvas);
-        } /*else if (controller.getModel().getGameState().equals(Constants.GameStates.END)) {
-            drawMessage(Constants.endMessage, Constants.infoPaint, Constants.restartMessage, Constants.infoPaint, canvas);
-        } else if (controller.getModel().getGameState().equals(Constants.GameStates.START)) {
-            drawMessage(Constants.titleMessage, Constants.infoPaint, Constants.startMessage, Constants.infoPaint, canvas);
-        } */else {
+        } else {
+            // Draw power up messages
             if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.REDUCE_SIZE)) {
                 drawMessage(Constants.reduceMessage, Constants.infoPaint, Constants.clickMessage, Constants.infoPaint, canvas);
             } else if (controller.getModel().getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
@@ -123,12 +121,13 @@ public class GameView extends SurfaceView implements View.OnClickListener, View.
         GameModel model = controller.getModel();
         if (!model.getGameState().equals(Constants.GameStates.END)
                 && model.getGameState().equals(Constants.GameStates.COLLISION)) {
+            Constants.click.start();
             if (model.getPowerUp().getType().equals(Constants.PowerUps.DOUBLE_POINTS)) {
-                model.setScore(model.getScore() + 2);
+                model.setScore(model.getScore() + Constants.doublePointClick);
             } else {
-                model.setScore(model.getScore() + 1);
+                model.setScore(model.getScore() + Constants.simpleClick);
             }
-            model.setGoodClicks(model.getGoodClicks() + 1);
+            model.setGoodClicks(model.getGoodClicks() + Constants.simpleClick);
             model.setGameState(Constants.GameStates.CLICK);
             if (Constants.monsterSuction.isPlaying()) {
                 Constants.monsterSuction.pause();

@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Madness_PowerUp extends PowerUp implements Serializable {
     public Madness_PowerUp() {
         super();
-        setDuration(200);
+        setDuration(Constants.madnessTime);
         setType(Constants.PowerUps.MADNESS);
     }
 }

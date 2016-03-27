@@ -3,6 +3,7 @@ package com.example.VirusAttack;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by bernardot on 2/10/16.
@@ -26,6 +27,7 @@ public class GameModel implements Serializable {
     private int score;
     private double differenceFictionalReal;
     private boolean portrait;
+    private Random generator;
 
     private Virus virus;
     private List<Wall> walls;
@@ -82,18 +84,21 @@ public class GameModel implements Serializable {
         goodClicks = badClicks = score = 0;
         powerUpCounter = madnessCounter = 0;
         powerUp = new PowerUp();
+        generator = new Random();
     }
 
     public void update() {
+
+        // Check if there is a chance of activating a power up
         if (!gameState.equals(Constants.GameStates.START) && !gameState.equals(Constants.GameStates.END) && !gameState.equals(Constants.GameStates.PAUSED) && powerUpCounter >= powerUp.getDuration()) {
             powerUpCounter = 0;
             if (Constants.monsterMad.isPlaying()) {
                 Constants.monsterMad.pause();
             }
             if (powerUp.getType().equals(Constants.PowerUps.NONE)) {
-                if (Math.random() <= Constants.doublePointsProbability) {
+                if (generator.nextDouble() <= Constants.doublePointsProbability) {
                     powerUp = new DoublePoints_PowerUp();
-                } else if (Math.random() <= Constants.reduceSizeProbability) {
+                } else if (generator.nextDouble() <= Constants.reduceSizeProbability) {
                     powerUp = new ReduceSize_PowerUp();
                 }
             } else {
@@ -101,9 +106,10 @@ public class GameModel implements Serializable {
             }
         }
 
+        // Try to activate madness
         if (score / 50 > madnessCounter && powerUp.getType().equals(Constants.PowerUps.NONE)) {
             System.out.println((goodClicks / (double) (goodClicks + badClicks)));
-            if (Math.random() <= (goodClicks / (double) (goodClicks + badClicks))) {
+            if (generator.nextDouble() <= (Constants.madnessProbability - (badClicks / (double) (goodClicks + badClicks)))) {
                 powerUp = new Madness_PowerUp();
                 if (!Constants.monsterMad.isPlaying()) {
                     Constants.monsterMad.start();
@@ -112,15 +118,18 @@ public class GameModel implements Serializable {
             madnessCounter++;
         }
 
+        // Check if virus penetrated a cell
         if (virus.checkBallInsideLimits(0, worldWidth)) {
-            System.out.println(gameState.toString());
-            System.out.println(virus.getRadius());
-            System.out.println(virus.getVelocity().getX() + "//" + virus.getVelocity().getY());
+            //System.out.println(gameState.toString());
+            //System.out.println(virus.getRadius());
+            //System.out.println(virus.getVelocity().getX() + "//" + virus.getVelocity().getY());
             gameState = Constants.GameStates.END;
         }
 
+        // Check if virus is touching 2 cells
         checkBallTouchingTwoWalls();
 
+        // Game logic
         if (gameState.equals(Constants.GameStates.MOVING)) {
             virus.updatePosition();
             for (Wall wall : walls) {
@@ -156,7 +165,7 @@ public class GameModel implements Serializable {
         }
 
         if (powerUp.getType().equals(Constants.PowerUps.MADNESS)) {
-            virus.increaseRadius(0.3);
+            virus.increaseRadius(0.4);
         }
 
         powerUpCounter++;

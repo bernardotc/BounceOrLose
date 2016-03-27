@@ -5,15 +5,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -42,6 +39,7 @@ public class VirusActivity extends Activity {
         Constants.monsterSuction.setLooping(true);
         Constants.monsterMad = MediaPlayer.create(getApplicationContext(), R.raw.monster_mad);
         Constants.monsterMad.setLooping(true);
+        Constants.click = MediaPlayer.create(getApplicationContext(), R.raw.click_sound);
 
         // Get screen resolution
         metrics = new DisplayMetrics();
@@ -67,11 +65,12 @@ public class VirusActivity extends Activity {
     protected void onResume() {
         super.onResume();
         //setContentView(view);
-        if (!Constants.backgroundMusic.isPlaying()) {
+        if (!Constants.backgroundMusic.isPlaying() || model.getGameState().equals(Constants.GameStates.END)) {
             Constants.backgroundMusic.start();
             loadGame();
         } else {
             model.gameInit();
+            setContentView(view);
         }
         game = new GameThread();
         game.start();
@@ -81,6 +80,8 @@ public class VirusActivity extends Activity {
     protected void onPause() {
         super.onPause();
         Constants.backgroundMusic.pause();
+        //Constants.monsterSuction.release();
+        //Constants.monsterMad.release();
         if (!getModel().getGameState().equals(Constants.GameStates.END) && !getModel().getGameState().equals(Constants.GameStates.START)) {
             getModel().setGameState(Constants.GameStates.PAUSED);
         }
@@ -119,7 +120,7 @@ public class VirusActivity extends Activity {
         try {
             FileOutputStream out = openFileOutput(Constants.vitaminsSavedFile, Context.MODE_PRIVATE);
             ObjectOutputStream obj = new ObjectOutputStream(out);
-            System.out.println(vitamins);
+            //System.out.println(vitamins);
             obj.writeInt(vitamins);
             obj.close();
             out.close();
@@ -134,7 +135,7 @@ public class VirusActivity extends Activity {
             FileInputStream in = openFileInput(Constants.vitaminsSavedFile);
             ObjectInputStream obj = new ObjectInputStream(in);
             vitamins = obj.readInt();
-            System.out.println(vitamins);
+            //System.out.println(vitamins);
             obj.close();
             in.close();
         } catch (Exception e) {
@@ -168,7 +169,7 @@ public class VirusActivity extends Activity {
         } else {
             model = game;
         }
-        System.out.println("l " + model.getVirus().getVelocity().getX());
+        //System.out.println("l " + model.getVirus().getVelocity().getX());
     }
 
     class GameThread extends Thread {
@@ -186,6 +187,7 @@ public class VirusActivity extends Activity {
                             Constants.monsterSuction.pause();
                         }
                         loadShowScore();
+                        //System.out.println("Joining thread");
                         join();
                     } else if (getModel().getGameState().equals(Constants.GameStates.STOP)) {
                         if (Constants.monsterMad.isPlaying()) {
@@ -194,6 +196,7 @@ public class VirusActivity extends Activity {
                         if (Constants.monsterSuction.isPlaying()) {
                             Constants.monsterSuction.pause();
                         }
+                        //System.out.println("Joining thread");
                         join();
                     } else {
                         view.draw();
@@ -206,7 +209,7 @@ public class VirusActivity extends Activity {
         }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(getResources().getString(R.string.instructionsItem));
         return true;
@@ -220,11 +223,11 @@ public class VirusActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 && !getModel().getGameState().equals(Constants.GameStates.END)) {
             // Pause the game
             if (!getModel().getGameState().equals(Constants.GameStates.END) && !getModel().getGameState().equals(Constants.GameStates.START))
                 getModel().setGameState(Constants.GameStates.PAUSED);
@@ -241,7 +244,8 @@ public class VirusActivity extends Activity {
                         public void onClick(DialogInterface dialog, int which) {
                             getModel().setGameState(Constants.GameStates.STOP);
                             Intent myIntent = new Intent(VirusActivity.this, MenuActivity.class);
-                            myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            //myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                             startActivity(myIntent);
                         }
                     });
@@ -328,19 +332,23 @@ public class VirusActivity extends Activity {
                 textScore.setText(textScore.getText() + " " + getModel().getScore());
                 textGoodClicks.setText(textGoodClicks.getText() + " " + getModel().getGoodClicks());
                 textBadClicks.setText(textBadClicks.getText() + " " + getModel().getBadClicks());
-                double accuracy = getModel().getGoodClicks() / (double) (getModel().getGoodClicks() + getModel().getBadClicks()) * 100;
+                Double accuracy = getModel().getGoodClicks() / (double) (getModel().getGoodClicks() + getModel().getBadClicks()) * 100;
+                if (accuracy.isNaN()) {
+                    accuracy = 0.0;
+                }
                 textAccuracy.setText(textAccuracy.getText() + " " + new DecimalFormat("#.00").format(accuracy) + "%");
                 int newVitamins = (int) (getModel().getScore() * accuracy / 100);
                 textNewVitamins.setText(textNewVitamins.getText() + " " + newVitamins);
                 saveVitamins(newVitamins);
 
-                backMenuButton.setOnTouchListener(new ButtonWithTouch(imageBackMenyButton));
+                backMenuButton.setOnTouchListener(new ButtonWithTouch(imageBackMenyButton, false));
 
                 backMenuButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent myIntent = new Intent(VirusActivity.this, MenuActivity.class);
-                        myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        //myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(myIntent);
                     }
                 });

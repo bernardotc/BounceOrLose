@@ -1,17 +1,23 @@
 package com.example.VirusAttack;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * Created by bernardot on 3/23/16.
@@ -23,6 +29,10 @@ public class MenuActivity extends Activity {
     TextView textStartView;
     TextView titleView;
     TextView vitaminsView;
+
+    RelativeLayout storeButton;
+    ImageView imageStoreButton;
+    TextView textStoreView;
 
     RelativeLayout instructionsButton;
     ImageView imageInstructionsButton;
@@ -38,6 +48,7 @@ public class MenuActivity extends Activity {
         Constants.backgroundMusic = MediaPlayer.create(getApplicationContext(), R.raw.background_sound);
         Constants.backgroundMusic.setLooping(true);
         Constants.vitaminsSavedFile = getResources().getString(R.string.saveVitaminsFile);
+        Constants.upgradeSavedFile = getResources().getString(R.string.upgradesFile);
 
         startButton = (RelativeLayout) findViewById(R.id.button_start);
         imageStartButton = (ImageView) findViewById(R.id.img_button);
@@ -48,35 +59,51 @@ public class MenuActivity extends Activity {
         imageInstructionsButton = (ImageView) findViewById(R.id.img_buttonInstructions);
         textInstructionsView = (TextView) findViewById(R.id.text_instructions);
 
+        storeButton = (RelativeLayout) findViewById(R.id.button_store);
+        imageStoreButton = (ImageView) findViewById(R.id.img_buttonStore);
+        textStoreView = (TextView) findViewById(R.id.text_store);
+
         Typeface customFont = Typeface.createFromAsset(getAssets(), "Acidic.TTF");
         textStartView.setTypeface(customFont);
         titleView.setTypeface(customFont);
         textInstructionsView.setTypeface(customFont);
+        textStoreView.setTypeface(customFont);
 
-        vitaminsView = (TextView) findViewById(R.id.text_vitamin);
-        int vitamins = loadVitamins();
-        vitaminsView.setText(String.valueOf(vitamins));
-
-        startButton.setOnTouchListener(new ButtonWithTouch(imageStartButton));
+        startButton.setOnTouchListener(new ButtonWithTouch(imageStartButton, false));
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 otherActivity = true;
                 Intent myIntent = new Intent(MenuActivity.this, VirusActivity.class);
-                myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(myIntent);
             }
         });
 
-        instructionsButton.setOnTouchListener(new ButtonWithTouch(imageInstructionsButton));
+        instructionsButton.setOnTouchListener(new ButtonWithTouch(imageInstructionsButton, false));
 
         instructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 otherActivity = true;
                 Intent myIntent = new Intent(MenuActivity.this, InstructionsActivity.class);
-                myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(myIntent);
+            }
+        });
+
+        storeButton.setOnTouchListener(new ButtonWithTouch(imageStoreButton, false));
+
+        storeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                otherActivity = true;
+                Intent myIntent = new Intent(MenuActivity.this, StoreActivity.class);
+                //myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(myIntent);
             }
         });
@@ -85,6 +112,11 @@ public class MenuActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        Constants.close = false;
+        vitaminsView = (TextView) findViewById(R.id.text_vitamin);
+        //saveVitamins(500000);
+        int vitamins = loadVitamins();
+        vitaminsView.setText(String.valueOf(vitamins));
         otherActivity = false;
         if (!Constants.backgroundMusic.isPlaying()) {
             try {
@@ -121,5 +153,20 @@ public class MenuActivity extends Activity {
             e.printStackTrace();
         }
         return vitamins;
+    }
+
+    public void saveVitamins(int additionalVitamins) {
+        int vitamins = loadVitamins();
+        vitamins += additionalVitamins;
+        try {
+            FileOutputStream out = openFileOutput(Constants.vitaminsSavedFile, Context.MODE_PRIVATE);
+            ObjectOutputStream obj = new ObjectOutputStream(out);
+            //System.out.println(vitamins);
+            obj.writeInt(vitamins);
+            obj.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

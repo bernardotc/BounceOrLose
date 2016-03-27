@@ -9,22 +9,33 @@ import android.widget.ImageView;
  */
 public class ButtonWithTouch implements View.OnTouchListener {
     ImageView imageButton;
+    boolean blue;
 
-    public ButtonWithTouch(ImageView imageButton) {
+    public ButtonWithTouch(ImageView imageButton, boolean blue) {
         this.imageButton = imageButton;
+        this.blue = blue;
     }
 
     @Override
     public boolean onTouch(View arg0, MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                imageButton.setImageResource(R.drawable.button_hover);
+                if (!blue)
+                    imageButton.setImageResource(R.drawable.button_hover);
+                else
+                    imageButton.setImageResource(R.drawable.button_blue_hover);
                 break;
             case MotionEvent.ACTION_UP:
-                imageButton.setImageResource(R.drawable.button);
+                if (!blue)
+                    imageButton.setImageResource(R.drawable.button);
+                else
+                    imageButton.setImageResource(R.drawable.button_blue);
                 break;
             case MotionEvent.ACTION_OUTSIDE:
-                imageButton.setImageResource(R.drawable.button);
+                if (!blue)
+                    imageButton.setImageResource(R.drawable.button);
+                else
+                    imageButton.setImageResource(R.drawable.button_blue);
                 break;
             default:
 
